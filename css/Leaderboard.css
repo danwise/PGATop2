@@ -1,0 +1,49 @@
+﻿body, input, select, textarea, button, .ui-btn
+{
+    font-size: .95em;
+    line-height: .9;
+}
+
+.ui-listview > .ui-li-has-thumb > .ui-btn, .ui-listview > .ui-li-has-thumb.ui-li-static
+{
+    min-height:3.62em;
+    padding-left:6.25em;
+}
+.ui-listview > .ui-li-static
+{
+    padding:.75em .25em;
+}
+
+.ui-listview > li h1, .ui-listview > li h2, .ui-listview > li h3, .ui-listview > li h4, .ui-listview > li h5, .ui-listview > li h6
+{
+    font-size: 1em;
+    font-weight: 600;
+    display: block;
+    margin: .4em 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ui-listview > li p
+{
+    font-size: .75em;
+    font-weight: 400;
+    display: block;
+    margin: .4em 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; 
+}
+
+.ui-page-theme-c .ui-btn, html .ui-bar-c .ui-btn, html .ui-body-c .ui-btn, html body .ui-group-theme-c .ui-btn, html head + body .ui-btn.ui-btn-c, .ui-page-theme-c .ui-btn:visited, html .ui-bar-c .ui-btn:visited, html .ui-body-c .ui-btn:visited, html body .ui-group-theme-c .ui-btn:visited, html head + body .ui-btn.ui-btn-c:visited
+{
+    color:#222;
+	background:#eee;
+	border: 1px solid #ccc;
+	text-shadow:0px 1px 0px #fff;
+	background-image: linear-gradient(#fff,#f1f1f1);
+	background-image: -o-linear-gradient( #fff /*{a-bar-background-start}*/, #f1f1f1 /*{a-bar-background-end}*/);
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #fff /*{a-bar-background-start}*/), to( #f1f1f1 /*{a-bar-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #fff /*{a-bar-background-start}*/, #f1f1f1 /*{a-bar-background-end}*/); /* Chrome 10+, Saf5.1+ */
+}

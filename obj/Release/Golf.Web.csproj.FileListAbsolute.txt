@@ -1,0 +1,9 @@
+C:\Users\dwise\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\bin\Golf.EventDraft.asmx
+C:\Users\dwise\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\bin\Golf.EventDraft.asmx.cs
+C:\Users\dwise\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\bin\Golf.Web.dll
+C:\Users\dwise\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\bin\Golf.Web.pdb
+C:\Users\dwise\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\bin\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\dwise\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\bin\Microsoft.Xrm.Sdk.dll
+C:\Users\dwise\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\obj\Release\ResolveAssemblyReference.cache
+C:\Users\dwise\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\obj\Release\Golf.Web.dll
+C:\Users\dwise\Documents\Visual Studio 2010\Projects\WebApplication1\WebApplication1\obj\Release\Golf.Web.pdb

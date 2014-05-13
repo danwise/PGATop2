@@ -1,0 +1,282 @@
+            <!doctype html>
+            <html>
+            <head>    
+                <title id="Title">PGA Top2 - Bet on Professional Golfers</title>   
+                <meta name="description" content="Bet on the PGA professional golfers with your friends. Choose from best ball, skins, top 2 and many more bets to take your friends money.">
+                <meta name="keywords" content="PGA,Golf,Peer to Peer Betting,Golfer,Round,Hole,Best Ball,Bestball,Skins,Pimp Golf App,PGATop2,PGA Top 2">
+                <meta name="author" content="Dan Wise">
+ 
+                <link rel="icon" href="favicon.ico" type="image/x-icon">
+                <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+                <link rel="apple-touch-icon" href="golf.png"/>
+                <link rel="apple-touch-icon-precomposed" href="golf.png"/> 
+                <link rel="apple-touch-startup-image" href="golf.png" /> 
+                <meta name='viewport' content='width=device-width, initial-scale=1'>      
+                <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+                <link rel="stylesheet"  href="css/dwise.css" />
+                <link rel="stylesheet" href="css/jqm-demos.css"/>
+                <script src='js/jquery-1.11.1.min.js'></script>
+	            <script src='js/jquery.mobile-1.4.2.min.js'></script>
+
+                <script src="js/jquery.cookie.js"></script>
+                <script src="js/GetURLParameters.js"></script>
+                <script language = 'javascript'>
+
+                     $(document).bind('pagechange', function (event) {
+                          //debugger;
+                          //loadXml('Event', '');
+                         $('.ui-page-active .eventHeader').text($.cookie("GolfEventName"));
+                         $('.ui-page-active .teamHeader').text($.cookie("GolfTeamName"));
+                         $('#Title').text($.cookie("GolfEventName"));
+
+                         $('.ui-page-active :jqmData(role=collapsible)').collapsible();
+                         $('.ui-page-active .ui-listview').listview('refresh');
+                         $('.ui-page-active :jqmData(role=content)').trigger('create');
+                     });
+
+                     $(document).on('ready', function () {
+
+//                          debugger;
+                         
+                         
+//                         $('.ui-page-active .eventHeader').text($.cookie("GolfEventName"));
+//                         $('.ui-page-active .teamHeader').text($.cookie("GolfTeamName"));
+                         
+                         
+                     });
+
+                     $(window).load(function () {
+                         $.mobile.loading('show');
+                     });
+
+
+                     $(document).on('pagebeforeshow', function (event, ui) {
+                       //  debugger;
+                         var urlParameters = getUrlVars();
+                         if (urlParameters != "") {
+                             if (urlParameters.GolfTeamId != null) {
+                                 loadTeam(urlParameters.GolfTeamId);
+                             }
+
+                             if (urlParameters.Reload != null && $.cookie("Reload") == null) {
+                                 //$.mobile.changePage("index.html", { transition: "pop" });
+                                 $.cookie("Reload", "true", { expires: 1, path: '/' });
+                                 location.reload();
+                             }
+                         }
+                         else {
+                             if ($.cookie("GolfTeamId") == null || $.cookie("GolfTeamName") == null) {
+                                 $.mobile.changePage("pulogin.htm", { transition: "pop" });
+                             }
+                         }
+                     });
+
+
+                    
+        </script>
+        </head>
+            <body id="body">    
+                <div data-role="page" id="Main" class="jqm-demos">
+                <script src="js/HomePage.js"></script>
+                <script src="js/EventInfo.js"></script>
+                    <script language = 'javascript'>
+
+                        $("#Main").on('pageinit', function () {
+//                            debugger;
+//                            if ($.cookie("postDraft") == "true") {
+////                                var path = $.cookie("previousUrl").split('/');
+////                                if (path[path.length - 1] == "Draft.html") {
+//                                    //alert("draft Redirect");
+//                                    //Reset Cookie to null
+//                                    $.cookie("postDraft", null);
+//                                    refreshXml();
+//                                   // location.reload();
+//                                    $.mobile.changePage("DraftResults.htm", { transition: "pop" });
+////                                }
+//                            }
+
+                            //loadXml('Event', '');
+                        });
+
+                        $("#Main").on('pagecreate', function () {
+                           // debugger;
+                            if ($.cookie("GolfTeamName") != null) {
+                                loadPage($.cookie("GolfTeamId").toString());
+                                loadGolfTeams($.cookie("GolfTeamId").toString());
+                            }
+                            else {
+                                loadGolfTeams("");
+                            }
+                        });
+
+                        
+
+                        $("#Main").on('pageshow', function () {
+//                            debugger;
+                            
+                            $('.ui-page-active :jqmData(role=collapsible)').collapsible();
+                            $('.ui-page-active .ui-listview').listview('refresh');
+                            $('.ui-page-active :jqmData(role=content)').trigger('create');
+
+                            $('.ui-page-active .eventHeader').text($.cookie("GolfEventName"));
+                            $('.ui-page-active .teamHeader').text($.cookie("GolfTeamName"));   
+                        });
+
+                        function loadPage(golfTeamId) {
+                            //debugger;
+                            $.ajax(
+                        {
+                            beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
+                            complete: function () { $.mobile.loading("hide"); }, //Hide spinner
+                            type: "GET",
+                            datatype: "xml",
+                            url: "http://www.pgatop2.com/Golf.EventDraft.asmx/HomePageLeaders",
+                            data: { GolfTeamId: golfTeamId },
+                            success: function (xml) {
+                                //debugger;
+                                xmlParser(xml);
+                            },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                               // debugger;
+                                //alert(errorThrown);
+                            }
+                        });
+                        }
+
+                        function xmlParser(xml) {
+                          //  debugger;
+                            // LoadMenu(xml);
+                            LoadMenu2(xml);
+                            EventInfo(xml);
+                            buildScorecardMenu(xml);
+                            $("#TeamTop2Leader").text($(xml).find("TeamTop2Leader").text());
+                            $("#BBThursLeader").text($(xml).find("BestBallLeader_Thurs").text());
+                            $("#BBFriLeader").text($(xml).find("BestBallLeader_Fri").text());
+                            $("#SkinsTotalSat").text($(xml).find("SkinsCount_Sat").text());
+                            $("#SkinsTotalSun").text($(xml).find("SkinsCount_Sun").text());
+                            $("#LeaderboardLeader").text($(xml).find("GolferLeaderboard").first().text());
+                        }
+
+                        
+
+                        function liClick(url) {
+                            $(location).attr('href', url);
+                        }
+
+                        function refreshPage() {
+                            location.reload();
+                        }
+
+                        
+
+
+                        function loadGolfTeams(golfTeamId) {
+                            //   debugger;
+                            $.ajax(
+                        {
+                            beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
+                            complete: function () { $.mobile.loading("hide"); }, //Hide spinner
+                            type: "GET",
+                            datatype: "xml",
+                            url: "http://www.pgatop2.com/Golf.EventDraft.asmx/GolfTeamDelegates",
+                            data: { GolfTeamId: golfTeamId },
+                            success: function (xml) {
+                                populateGolfTeams(xml);
+                            },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                               // alert(errorThrown);
+                            }
+                        });
+                        }
+
+                        function populateGolfTeams(xml) {
+                            var index = 0;
+                            var i = 0;
+                            var loggedInGolfTeamId;
+                            if($.cookie("GolfTeamId") != null)
+                                loggedInGolfTeamId = $.cookie("GolfTeamId").toUpperCase();
+
+                            $(xml).find("GolfTeam").each(
+                                function () {
+                                    var xmlGolfTeamId = $(this).find("GolfTeamId").first().text().toUpperCase();
+                                    var xmlGolfTeamName = $(this).find("GolfTeamName").first().text();
+
+                                    if (xmlGolfTeamId == loggedInGolfTeamId && $(this)[0].parentNode.nodeName == "GolfTeams") {
+                                        //Append Logged In Team First
+                                        $('#teamsappointed').append($('<option/>',
+                                        {
+                                            'text': xmlGolfTeamName,
+                                            'value': xmlGolfTeamId + ":" + xmlGolfTeamName
+                                        }));
+
+                                        //Append Delagated Teams
+                                        $(this).find("Delegates").find("GolfTeam").each(
+                                        function () {
+                                            var dGolfTeamId = $(this).find("GolfTeamId").text().toUpperCase();
+                                            var dGolfTeamName = $(this).find("GolfTeamName").text();
+                                            $('#teamsappointed').append($('<option/>',
+                                                {
+                                                    'text': dGolfTeamName,
+                                                    'value': dGolfTeamId + ":" + dGolfTeamName
+                                                }));
+                                        });
+                                    }
+                                });
+
+                            var myselect = $("#teamsappointed");
+                            myselect[0].selectedIndex = 0;
+                            $('#teamsappointed').selectmenu('refresh');
+                        }
+
+
+                        
+                        
+                    </script>        
+                    <div data-role='header' id="pageHeader" data-position="fixed" data-id="MainHeader">
+                            <div data-role="navbar">
+                                 <ul class="custom-navbar ui-grid-b" >
+                                    <li><a href="javascript:history.go(-1)" data-icon="back" data-direction="reverse" data-mini="true">Back</a></li>
+                                    <li></li>
+                                    <li><a href="PlayerMatchups.htm" rel="external" data-mini="true" data-icon="plus" class="ui-icon-proposed" id="A1">Matchups</a></li>
+                                    <li><a href="#popupMenu" data-rel="popup" data-inline="true" data-icon="grid" data-mini="true">Scorecards</a></li>
+                                    <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
+                                </ul>
+                            </div>
+                           <div data-role="popup" id="popupMenu" data-theme="b">
+                                <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="b" id="ulpopupScorecards">
+                                    <li data-role="divider" data-theme="b" id="scorecardHeader">Scorecards</li>
+                                </ul>
+                            </div>
+                            
+                            <div  data-role='footer' class="ui-grid-a" style="height:50px" data-theme='b'>
+                                <div data-role="navbar">
+                                    <div id="pageHeaderHeader1"  class="ui-block-b"></div> 
+                                    <div id="pageHeaderFooter1" class="ui-block-b ui-btn-right">
+                                    <div data-role="fieldcontain" data-theme='b'> 
+                                                <select id="teamsappointed" class="select_choice" data-native-menu="false" id="Select1" data-theme='b' >
+                                                </select>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                     </div>
+                    <div data-role='content'>
+                            <h3 id="DelayNotification" style="visibility:hidden;display:none;color:red"></h3>
+                            <ul data-role='listview' id="HomeMenu" data-inset='true' data-theme="b"/>
+                     </div>
+                </div>   
+                <script language = 'javascript'>
+                    $("#teamsappointed").on("change", function () {
+                        //debugger;
+                        var GolfInfo = $(this).val().split(":");
+                        $.cookie("GolfTeamId", GolfInfo[0], { expires: 1000, path: '/' });
+                        $.cookie("GolfTeamName", GolfInfo[1], { expires: 1000, path: '/' });
+                        $("#HomeMenu").empty();
+                        loadPage(GolfInfo[0]);
+                        $('.ui-page-active :jqmData(role=content)').trigger('create');
+                    });
+                </script>
+            </body>
+        </html>

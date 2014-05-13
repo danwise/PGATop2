@@ -1,0 +1,63 @@
+            <!doctype html>
+            <html>
+            <head>
+	            <meta charset="utf-8">
+	            <meta name="viewport" content="width=device-width, initial-scale=1">
+	            <title>Player Matchup</title>
+	            <link rel="stylesheet"  href="js/jquery.mobile-1.4.2.min.css">
+                <link rel="stylesheet" href="css/jqm-demos.css">
+	            <link rel="shortcut icon" href="favicon.ico">
+                <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	            <script src='js/jquery-1.11.0.min.js'></script>    
+	            <script src="js/index.js"></script>
+	            <script src='js/jquery.mobile-1.4.2.min.js'></script>
+            </head>
+                <body>    
+                <div data-role='page' id="matchups" >   
+                <div data-role='header' id="Div8" data-theme='e'>
+                    <div data-role="navbar" data-theme ="e">
+                        <ul class="custom-navbar ui-grid-e" >
+                            <li><a href="javascript:history.go(-1)" data-icon="back" data-direction="reverse" data-mini="true">Back</a></li>
+                            <li><a href="index.html" rel="external" data-mini="true" data-icon="home" data-direction="reverse">Home</a></li>
+                            <li></li>
+                            <li></li>
+                            <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
+                        </ul>
+                    </div>
+                    <div  data-role='footer' class="ui-grid-a" style="height:60px">
+                        <div id="pageHeaderHeader1"  class="ui-block-a"></div> 
+                        <div id="pageHeaderFooter1" class="ui-block-b">
+                        <div data-role="fieldcontain"> 
+                                    <select  class="select_choice" data-native-menu="false" id="teamsappointed">
+                                    </select>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-role='content' id='dBets'></div>
+                <div data-role='footer' class="ui-grid-d">
+                    
+                </div>
+                <script src="js/GetURLParameters.js"></script>
+                <script language = 'javascript'>
+                    $("#matchups").on('pageinit', function () {
+                           // debugger;
+                        var urlParameters = getUrlVarsPage('matchups');
+                        var PlayerMatchupId;
+                        var GolfTeamId;
+                        if (urlParameters != "") {
+                            if (urlParameters.PlayerMatchupId != null) {
+                                PlayerMatchupId = urlParameters.PlayerMatchupId
+                            }
+
+                            if (urlParameters.GolfTeamId != null) {
+                                GolfTeamId = urlParameters.GolfTeamId
+                            }
+                        }
+
+                        $.mobile.changePage("puSideBet.htm?PlayerMatchupId=" + PlayerMatchupId + "&GolfTeamId=" + GolfTeamId, { role: "dialog" });
+                    });
+            </script>  
+        </div><!-- /page -->
+    </body>
+</html>

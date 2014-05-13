@@ -1,0 +1,66 @@
+
+            <!doctype html>
+            <html>
+            <head>    
+                <title>Travelers Championship</title>    
+                <meta name='viewport' content='width=device-width, initial-scale=1'>      
+               <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+                <script src='http://code.jquery.com/jquery-1.8.2.min.js'></script>    
+                <script src='../jquery.mobile-1.3.1/jquery.mobile-1.3.1.min.js'></script>
+                <script src="../Scripts/jquery.cookie.js"></script>
+                 <script language = 'javascript'>
+                     $(document).ready(function () {
+                         //debugger;
+                         var urlParameters = getUrlVars();
+                         if (urlParameters != "") {
+                             if ($.cookie("GolfTeamId") != null)
+                                 $.cookie("GolfTeamId", null);
+                             $.cookie("GolfTeamId", urlParameters.GolfTeamId, { expires: 1000, path: '/' });
+
+                         }
+                         //$('#details').val($.cookie('contactId'));
+                     });
+
+                     function getUrlVars() {
+                      
+                         var vars = [], hash;
+                         var hashes;
+                         if (($.mobile.activePage)) {
+                             if ($.mobile.activePage.data('url').indexOf("?") != -1) {
+                                 // first check the active page url for parameters           
+                                 hashes = $.mobile.activePage.data('url').slice($.mobile.activePage.data('url').indexOf('?') + 1).split('&');
+                             }
+                             else { // otherwise just get the current url           
+                                 hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                             }
+                             for (var i = 0; i < hashes.length; i++) {
+                                 hash = hashes[i].split('=');
+                                 if (hash.length > 1 && hash[1].indexOf("#") == -1) {
+                                     // filter out misinterpreted paramters caused by JQM url naming scheme                
+                                     vars.push(hash[0]);
+                                     vars[hash[0]] = hash[1];
+                                 }
+                             }
+                         }
+                         return vars;
+                     }
+
+        </script>
+            </head>
+<body>    
+                <div data-role='page'>         
+                <div data-role='header' data-theme='e'>
+                    <h1>Travelers Championship</h1>        
+                    <a href='javascript:history.go(-1)' data-icon="back" >Back</a>   
+                    <a href='javascript:location.reload()' class="reload ui-btn-right" data-role="button" data-icon="refresh">Reload</a>
+                </div>
+<div data-role='content'><div data-role='content-primary'><h2></h2><ul data-role='listview' >
+<li><a href='DraftRoom/Draft.html'>Draft Room</a></li><li><a href='DraftRoom/DraftResults.html'>Draft Results</a></li></ul></div></div>
+
+                        <div data-role='footer'>            
+                            </div>
+                            <!-- /footer -->     
+                        </div>
+                        <!-- /page -->
+                    </body>
+                </html>

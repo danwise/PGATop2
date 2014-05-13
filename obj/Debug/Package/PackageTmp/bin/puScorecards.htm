@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>Select Scorecard</title> 
+    <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+    <script src='http://code.jquery.com/jquery-1.8.2.min.js'></script>    
+    <script src='../jquery.mobile-1.3.1/jquery.mobile-1.3.1.min.js'></script>
+    <script src="../Scripts/GetURLParameters.js"></script>
+     <script language = 'javascript'>
+
+         $(document).bind('pagechange', function () {
+             var urlParameters = getUrlVars();
+             var EventId;
+             var Day;
+             var LeagueId;
+             debugger;
+             if (urlParameters != "") {
+                 if (urlParameters.EventId != null) {
+                     EventId = urlParameters.EventId
+                 }
+
+                 if (urlParameters.Day != null) {
+                     Day = urlParameters.Day
+                 }
+
+                 if (urlParameters.LeagueId != null) {
+                     LeagueId = urlParameters.LeagueId
+                 }
+             }
+             $('#scorecard_thurs').load('../scorecards/GolferScorecards_' + EventId + '_' + Day + '_' + LeagueId + '.htm');
+         });
+</script>
+</head> 
+
+<body> 
+<div data-role="page" id="pScorecard" data-close-btn="right" >
+<script language = 'javascript'>
+    $("#pScorecard").on('pageinit', function () {
+        var urlParameters = getUrlVarsPage('pScorecard');
+        var EventId;
+        var Day;
+        if (urlParameters != "") {
+            if (urlParameters.EventId != null) {
+                EventId = urlParameters.EventId
+            }
+
+            if (urlParameters.Day != null) {
+                Day = urlParameters.Day
+            }
+
+            if (urlParameters.LeagueId != null) {
+                LeagueId = urlParameters.LeagueId
+            }
+        }
+        $('#scorecard_thurs').load('../scorecards/GolferScorecards_' + EventId + '_' + Day + '_' + LeagueId + '.htm');
+    });
+</script>
+		<div data-role="header" data-theme="d" style="width:100%">
+			<h3>Scorecard</h3>
+		</div>
+
+		<div data-role="content" data-theme="c" id="scorecard_thurs"  style="width:100%;zoom:.5;-moz-transform:{ scale (0.5)};-o-transform:{ scale (0.5) }" >
+            
+		</div>
+	</div>
+</body>
+</html>

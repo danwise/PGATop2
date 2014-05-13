@@ -1,0 +1,9 @@
+c:\users\dwise\documents\visual studio 2010\Projects\WebApplication1\WebApplication1\bin\WebApplication1.dll
+c:\users\dwise\documents\visual studio 2010\Projects\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+c:\users\dwise\documents\visual studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\ResolveAssemblyReference.cache
+c:\users\dwise\documents\visual studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+c:\users\dwise\documents\visual studio 2010\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+c:\users\dwise\documents\visual studio 2010\Projects\WebApplication1\WebApplication1\bin\Microsoft.Crm.Sdk.Proxy.dll
+c:\users\dwise\documents\visual studio 2010\Projects\WebApplication1\WebApplication1\bin\Microsoft.Xrm.Sdk.dll
+c:\users\dwise\documents\visual studio 2010\Projects\WebApplication1\WebApplication1\bin\services\WebService1.asmx
+c:\users\dwise\documents\visual studio 2010\Projects\WebApplication1\WebApplication1\bin\services\WebService1.asmx.cs

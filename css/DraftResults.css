@@ -1,0 +1,37 @@
+﻿body, input, select, textarea, button, .ui-btn
+{
+	    font-size: .8em;
+	    line-height: 1;
+}
+
+.ui-listview > .ui-li-has-thumb > .ui-btn, .ui-listview > .ui-li-has-thumb.ui-li-static
+{
+    min-height:3.62em;
+    padding-left:6.25em;
+}
+.ui-listview > .ui-li-static
+{
+    padding:.75em .25em;
+}
+
+.ui-listview > li h1, .ui-listview > li h2, .ui-listview > li h3, .ui-listview > li h4, .ui-listview > li h5, .ui-listview > li h6
+{
+    font-size: 1em;
+    font-weight: 700;
+    display: block;
+    margin: .4em 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ui-listview > li p
+{
+    font-size: .75em;
+    font-weight: 400;
+    display: block;
+    margin: .4em 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; 
+}

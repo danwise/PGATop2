@@ -1,0 +1,88 @@
+
+            <!doctype html>
+            <html>
+            <head>    
+                <title>Travelers Championship</title>    
+                <meta name='viewport' content='width=device-width, initial-scale=1'>    
+                <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+                <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  
+                <script src='../jquery.mobile-1.3.1/jquery.mobile-1.3.1.min.js'></script>
+
+                
+            </head>
+<body>    
+                <div data-role='page' id="indexPage">    
+                <script type="text/javascript">
+                    $("#indexPage").on('pageinit', function () {
+                        debugger;
+                        loadGolfers();
+                    });
+
+                    var mainloaded = false;
+
+                    $('#indexPage').on('pageshow', function (event) {   //Workaround to show page loading on initial page load
+                        if (!mainloaded) {
+                            $.mobile.showPageLoadingMsg();
+                        }
+                    });
+
+                    function loadGolfers() {
+                        //debugger;
+                        $.ajax(
+                        {
+                            complete: function () { $.mobile.hidePageLoadingMsg() }, //Hide spinner
+                            type: "POST",
+                            datatype: "xml",
+                            url: "../Golf.EventDraft.asmx/DraftResults",
+                            data: {},
+                            success: function (xml) { xmlParser(xml); },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                alert(errorThrown);
+                            }
+                        });
+
+
+                    }
+
+                    function xmlParser(xml) {
+                        $(xml).find("EventDraft").each(
+                        function () {
+                            $("#draftResults")
+                            .append($('<li/>', {})
+                                .append($('<a/>',
+                                {
+                                    'href': '#',
+                                    'data-transition': 'slide'
+                                })
+                                .append($('<img/>',
+                                {
+                                    'src': $(this).find("GolferImgUrl").text()
+                                }))
+                                .append($('<h3/>',
+                                {
+                                    'text': $(this).find("Golfer").text()
+                                }))
+                                .append($('<p/>',
+                                {
+                                    'text': $(this).find("GolfTeam").text()
+                                }))));
+                        })
+
+                        $('#draftResults').listview('refresh');
+                    }
+        </script>
+   
+                <div data-role='header' data-theme='e'>
+                    <h1>Travelers Championship</h1>        
+                    <a href='javascript:history.go(-1)' data-icon="back" >Back</a>   
+                    <a href='javascript:location.reload()' class="reload ui-btn-right" data-role="button" data-icon="refresh">Reload</a>
+                </div>
+                <div data-role='content' id="content">
+                    <div data-role='content-primary' >
+                        <ul data-role='listview' data-inset='true' data-filter='true' id="draftResults" data-theme="c" />
+                    </div>
+                </div>
+                <div data-role='footer'/>            
+              </div>
+            </body>
+        </html>

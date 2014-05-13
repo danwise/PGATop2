@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EventXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CurrentXML>xml/e3d5b65c-46b9-e311-aed7-3ebb89d5579f_130408535607948521.xml</CurrentXML>
+  <CreatedOn>12:19:20 PM</CreatedOn>
+  <EventId>e3d5b65c-46b9-e311-aed7-3ebb89d5579f</EventId>
+  <EventName>Shell Houston Open</EventName>
+  <Scorecards />
+  <GolfTeams>
+    <GolfTeam>
+      <GolfTeamName>Aces are easy</GolfTeamName>
+      <GolfTeamId>a32b557d-f4d2-e211-bdb6-3ebb89d5579f</GolfTeamId>
+      <TeamTop2Score>0</TeamTop2Score>
+      <BestBallScore_Thurs>0</BestBallScore_Thurs>
+      <BestBallScore_Fri>0</BestBallScore_Fri>
+      <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+      <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+      <OnTheClock>false</OnTheClock>
+      <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+      <Golfers />
+      <BestBallHoles_Thurs />
+      <BestBallHoles_Fri />
+      <ActiveGolfers>0</ActiveGolfers>
+      <Delegates>
+        <GolfTeam>
+          <GolfTeamName>The Dr. Is In</GolfTeamName>
+          <GolfTeamId>368c16e4-9bd2-e211-bdb6-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+        <GolfTeam>
+          <GolfTeamName>Lama</GolfTeamName>
+          <GolfTeamId>96d3d685-6eb7-e211-b3b1-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+      </Delegates>
+    </GolfTeam>
+    <GolfTeam>
+      <GolfTeamName>Captain America</GolfTeamName>
+      <GolfTeamId>68a193fb-09d2-e211-bdb6-3ebb89d5579f</GolfTeamId>
+      <TeamTop2Score>0</TeamTop2Score>
+      <BestBallScore_Thurs>0</BestBallScore_Thurs>
+      <BestBallScore_Fri>0</BestBallScore_Fri>
+      <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+      <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+      <OnTheClock>false</OnTheClock>
+      <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+      <Golfers />
+      <BestBallHoles_Thurs />
+      <BestBallHoles_Fri />
+      <ActiveGolfers>0</ActiveGolfers>
+      <Delegates />
+    </GolfTeam>
+    <GolfTeam>
+      <GolfTeamName>Fore Right!</GolfTeamName>
+      <GolfTeamId>f2095d4d-11d2-e211-bdb6-3ebb89d5579f</GolfTeamId>
+      <TeamTop2Score>0</TeamTop2Score>
+      <BestBallScore_Thurs>0</BestBallScore_Thurs>
+      <BestBallScore_Fri>0</BestBallScore_Fri>
+      <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+      <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+      <OnTheClock>false</OnTheClock>
+      <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+      <Golfers />
+      <BestBallHoles_Thurs />
+      <BestBallHoles_Fri />
+      <ActiveGolfers>0</ActiveGolfers>
+      <Delegates />
+    </GolfTeam>
+    <GolfTeam>
+      <GolfTeamName>Lama</GolfTeamName>
+      <GolfTeamId>96d3d685-6eb7-e211-b3b1-3ebb89d5579f</GolfTeamId>
+      <TeamTop2Score>0</TeamTop2Score>
+      <BestBallScore_Thurs>0</BestBallScore_Thurs>
+      <BestBallScore_Fri>0</BestBallScore_Fri>
+      <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+      <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+      <OnTheClock>false</OnTheClock>
+      <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+      <Golfers />
+      <BestBallHoles_Thurs />
+      <BestBallHoles_Fri />
+      <ActiveGolfers>0</ActiveGolfers>
+      <Delegates>
+        <GolfTeam>
+          <GolfTeamName>The Dr. Is In</GolfTeamName>
+          <GolfTeamId>368c16e4-9bd2-e211-bdb6-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+        <GolfTeam>
+          <GolfTeamName>Aces are easy</GolfTeamName>
+          <GolfTeamId>a32b557d-f4d2-e211-bdb6-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+      </Delegates>
+    </GolfTeam>
+    <GolfTeam>
+      <GolfTeamName>Mac Trux</GolfTeamName>
+      <GolfTeamId>890b0220-ead1-e211-bdb6-3ebb89d5579f</GolfTeamId>
+      <TeamTop2Score>0</TeamTop2Score>
+      <BestBallScore_Thurs>0</BestBallScore_Thurs>
+      <BestBallScore_Fri>0</BestBallScore_Fri>
+      <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+      <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+      <OnTheClock>false</OnTheClock>
+      <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+      <Golfers />
+      <BestBallHoles_Thurs />
+      <BestBallHoles_Fri />
+      <ActiveGolfers>0</ActiveGolfers>
+      <Delegates />
+    </GolfTeam>
+    <GolfTeam>
+      <GolfTeamName>Mrazek</GolfTeamName>
+      <GolfTeamId>92a63778-d1cc-e211-b1c4-3ebb89d5579f</GolfTeamId>
+      <TeamTop2Score>0</TeamTop2Score>
+      <BestBallScore_Thurs>0</BestBallScore_Thurs>
+      <BestBallScore_Fri>0</BestBallScore_Fri>
+      <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+      <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+      <OnTheClock>false</OnTheClock>
+      <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+      <Golfers />
+      <BestBallHoles_Thurs />
+      <BestBallHoles_Fri />
+      <ActiveGolfers>0</ActiveGolfers>
+      <Delegates />
+    </GolfTeam>
+    <GolfTeam>
+      <GolfTeamName>Mulligan</GolfTeamName>
+      <GolfTeamId>a48fa893-cded-e211-bd98-3ebb89d5579f</GolfTeamId>
+      <TeamTop2Score>0</TeamTop2Score>
+      <BestBallScore_Thurs>0</BestBallScore_Thurs>
+      <BestBallScore_Fri>0</BestBallScore_Fri>
+      <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+      <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+      <OnTheClock>false</OnTheClock>
+      <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+      <Golfers />
+      <BestBallHoles_Thurs />
+      <BestBallHoles_Fri />
+      <ActiveGolfers>0</ActiveGolfers>
+      <Delegates />
+    </GolfTeam>
+    <GolfTeam>
+      <GolfTeamName>Snowman</GolfTeamName>
+      <GolfTeamId>2461e06a-b5d2-e211-bdb6-3ebb89d5579f</GolfTeamId>
+      <TeamTop2Score>0</TeamTop2Score>
+      <BestBallScore_Thurs>0</BestBallScore_Thurs>
+      <BestBallScore_Fri>0</BestBallScore_Fri>
+      <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+      <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+      <OnTheClock>false</OnTheClock>
+      <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+      <Golfers />
+      <BestBallHoles_Thurs />
+      <BestBallHoles_Fri />
+      <ActiveGolfers>0</ActiveGolfers>
+      <Delegates />
+    </GolfTeam>
+    <GolfTeam>
+      <GolfTeamName>The Dr. Is In</GolfTeamName>
+      <GolfTeamId>368c16e4-9bd2-e211-bdb6-3ebb89d5579f</GolfTeamId>
+      <TeamTop2Score>0</TeamTop2Score>
+      <BestBallScore_Thurs>0</BestBallScore_Thurs>
+      <BestBallScore_Fri>0</BestBallScore_Fri>
+      <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+      <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+      <OnTheClock>false</OnTheClock>
+      <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+      <Golfers />
+      <BestBallHoles_Thurs />
+      <BestBallHoles_Fri />
+      <ActiveGolfers>0</ActiveGolfers>
+      <Delegates>
+        <GolfTeam>
+          <GolfTeamName>Aces are easy</GolfTeamName>
+          <GolfTeamId>a32b557d-f4d2-e211-bdb6-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+        <GolfTeam>
+          <GolfTeamName>Lama</GolfTeamName>
+          <GolfTeamId>96d3d685-6eb7-e211-b3b1-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+      </Delegates>
+    </GolfTeam>
+    <GolfTeam>
+      <GolfTeamName>Wise</GolfTeamName>
+      <GolfTeamId>6414808f-6eb7-e211-b3b1-3ebb89d5579f</GolfTeamId>
+      <TeamTop2Score>0</TeamTop2Score>
+      <BestBallScore_Thurs>0</BestBallScore_Thurs>
+      <BestBallScore_Fri>0</BestBallScore_Fri>
+      <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+      <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+      <OnTheClock>false</OnTheClock>
+      <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+      <Golfers />
+      <BestBallHoles_Thurs />
+      <BestBallHoles_Fri />
+      <ActiveGolfers>0</ActiveGolfers>
+      <Delegates>
+        <GolfTeam>
+          <GolfTeamName>Mrazek</GolfTeamName>
+          <GolfTeamId>92a63778-d1cc-e211-b1c4-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+        <GolfTeam>
+          <GolfTeamName>Lama</GolfTeamName>
+          <GolfTeamId>96d3d685-6eb7-e211-b3b1-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+        <GolfTeam>
+          <GolfTeamName>Mac Trux</GolfTeamName>
+          <GolfTeamId>890b0220-ead1-e211-bdb6-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+        <GolfTeam>
+          <GolfTeamName>Aces are easy</GolfTeamName>
+          <GolfTeamId>a32b557d-f4d2-e211-bdb6-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+        <GolfTeam>
+          <GolfTeamName>Captain America</GolfTeamName>
+          <GolfTeamId>68a193fb-09d2-e211-bdb6-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+        <GolfTeam>
+          <GolfTeamName>Fore Right!</GolfTeamName>
+          <GolfTeamId>f2095d4d-11d2-e211-bdb6-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+        <GolfTeam>
+          <GolfTeamName>Mulligan</GolfTeamName>
+          <GolfTeamId>a48fa893-cded-e211-bd98-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+        <GolfTeam>
+          <GolfTeamName>Snowman</GolfTeamName>
+          <GolfTeamId>2461e06a-b5d2-e211-bdb6-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+        <GolfTeam>
+          <GolfTeamName>The Dr. Is In</GolfTeamName>
+          <GolfTeamId>368c16e4-9bd2-e211-bdb6-3ebb89d5579f</GolfTeamId>
+          <TeamTop2Score>0</TeamTop2Score>
+          <BestBallScore_Thurs>0</BestBallScore_Thurs>
+          <BestBallScore_Fri>0</BestBallScore_Fri>
+          <BestBallTieBreaker_Thurs>false</BestBallTieBreaker_Thurs>
+          <BestBallTieBreaker_Fri>false</BestBallTieBreaker_Fri>
+          <OnTheClock>false</OnTheClock>
+          <OnTheClockSince>0001-01-01T00:00:00</OnTheClockSince>
+          <Golfers />
+          <BestBallHoles_Thurs />
+          <BestBallHoles_Fri />
+          <ActiveGolfers>0</ActiveGolfers>
+          <Delegates />
+        </GolfTeam>
+      </Delegates>
+    </GolfTeam>
+  </GolfTeams>
+  <GolferLeaderboard>Dustin Johnson @ 0</GolferLeaderboard>
+  <TeamTop2Leader>Lama @ 0</TeamTop2Leader>
+  <SkinsCount_Sat>0</SkinsCount_Sat>
+  <SkinsCount_Sun>0</SkinsCount_Sun>
+  <GolfTeamOnTheClock>Mrazek</GolfTeamOnTheClock>
+  <LastDraftPick>Pick#5: Mac Trux selects Matt Kuchar</LastDraftPick>
+  <EventStatusName>Active</EventStatusName>
+</EventXml>
