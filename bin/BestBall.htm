@@ -1,0 +1,114 @@
+﻿            <!doctype html>
+            <html>
+            <head>    
+                <title id="Title">Best Ball</title>    
+                <meta name="viewport" content="width=device-width, initial-scale=1"> 
+                <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+                <link rel="stylesheet" href="css/jqm-demos.css" />
+                <script src='js/jquery-1.11.1.min.js'> </script>
+	            <script src='js/jquery.mobile-1.4.2.min.js'></script>
+                <script language="javascript">
+                    $(document).bind('pagechange', function (event) {
+                        $('.ui-page-active .eventHeader').text(window.localStorage["GolfEventName"]);
+                        $('.ui-page-active .teamHeader').text(window.localStorage["GolfTeamName"]);
+                    });
+
+                    $(window).load(function () {
+                        $.mobile.loading("show", {
+                            text: "Loading Bestball",
+                            textVisible: true,
+                            theme: "b",
+                            html: ""
+                        });
+                        //$.mobile.loading('show');
+                    });
+
+                </script>
+        </head>
+            <body id="body">    
+                <!-- TeamTop2 -->
+                <div data-role='page' id="bestball"> 
+                    <script src="js/LoadXml.js"></script>
+                    <script src="js/BestBall2.js"></script>
+                    <script src="js/GetURLParameters.js"></script>
+                    <script src="js/jquery.cookie.js"></script>
+                    <script type="text/javascript">
+                        $("#bestball").on('pageinit', function () {
+                           // debugger;
+                            var urlParameters = getUrlVarsPage('bestball');
+                            var Day;
+                            if (urlParameters != "") {
+                                if (urlParameters.Day != null) {
+                                    Day = urlParameters.Day
+                                }
+                            }
+                            //loadXml('BestBall', Day);
+                            loadBestBall(Day);
+                        });
+
+                        $("#bestball").on('pageshow', function () {
+                            $('.ui-page-active :jqmData(role=collapsible)').collapsible();
+                            $('.ui-page-active .ui-listview').listview('refresh');
+                            $('.ui-page-active :jqmData(role=content)').trigger('create');
+                            $('.ui-page-active :jqmData(role=header)').trigger('create');
+                        });
+
+                        function loadBestBall(day) {
+                            //      debugger;
+                            $.ajax(
+                            {
+                               // beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
+                                //complete: function () { $.mobile.loading("hide"); }, //Hide spinner
+                                type: "GET",
+                                datatype: "xml",
+                                url: "http://www.pgatop2.com/Golf.EventDraft.asmx/BestBall",
+                                data: { GolfTeamId: window.localStorage["GolfTeamId"], Day: day },
+                                success: function (xml) { xmlParser(xml,day); },
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                 //   alert(errorThrown);
+                                }
+                            });
+                        }
+
+                        function xmlParser(xml, day) {
+                            BestBall(xml, day);
+                            $.mobile.loading("hide"); 
+                        }
+
+                        function refreshPage() {
+                            location.reload();
+                        }
+                    </script>
+                    <div data-role='header' id="Div8" data-theme='e'>
+                        <div data-role="navbar">
+                                 <ul class="custom-navbar ui-grid-b" >
+                                    <li><a href="javascript:history.go(-1)" data-icon="back" data-direction="reverse" data-mini="true">Back</a></li>
+                                    <li><a href="index.html" rel="external" data-mini="true" data-icon="home">Home</a></li>
+                                    <li><a href="PlayerMatchups.htm" rel="external" data-mini="true" data-icon="plus" class="ui-icon-proposed" id="A1">Matchups</a></li>
+                                    <li><a href="#popupMenu" data-rel="popup" data-inline="true" data-icon="grid" data-mini="true">Scorecards</a></li>
+                                    <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
+                                </ul>
+                            </div>
+                                
+                            <div  data-role='footer' class="ui-grid-a" style="height:50px" data-theme='b'>
+                                <div data-role="navbar">
+                                    <ul class="custom-navbar ui-grid-a" >
+                                        <li class="eventHeader" style="text-align:left; font-size:small"></li>
+                                        <li class="teamHeader" style="text-align:right; font-size:x-small"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                    </div>
+                    <div data-role='content'>
+                        <h3>Best Ball</h3>
+                        <ul data-role='listview' id="ulbbThurs" data-inset='true' data-theme='c'></ul>
+                        <ul data-role='listview' id="ulbbFri" data-inset='true' data-theme='c'></ul>
+                        <ul data-role='listview' id="ulbb36" data-inset='true' data-theme='c'></ul>
+                    </div>
+                    <div data-role='footer'></div>            
+                </div>
+
+              
+                 
+            </body>
+        </html>
