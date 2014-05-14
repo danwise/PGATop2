@@ -60,14 +60,16 @@
                      $(document).on('pagebeforeshow', function (event, ui) {
                          //  debugger;
                          if (window.localStorage["GolfTeamId"] == undefined) {
-                             if ($.cookie("GolfTeamId") == null || $.cookie("GolfTeamName") == null) {
-                                 $.mobile.changePage("pulogin.htm", { transition: "pop" });
-                             }
-                             else {
-                                 window.localStorage["GolfTeamId"] = $.cookie("GolfTeamId");
-                                 window.localStorage["GolfTeamName"] = $.cookie("GolfTeamName");
+                             $.mobile.changePage("pulogin.htm", { transition: "pop" });
 
-                             }
+//                             if ($.cookie("GolfTeamId") == null || $.cookie("GolfTeamName") == null) {
+//                                 $.mobile.changePage("pulogin.htm", { transition: "pop" });
+//                             }
+//                             else {
+//                                 window.localStorage["GolfTeamId"] = $.cookie("GolfTeamId");
+//                                 window.localStorage["GolfTeamName"] = $.cookie("GolfTeamName");
+
+//                             }
                          }
                      });
 
