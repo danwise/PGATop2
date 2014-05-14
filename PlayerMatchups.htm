@@ -138,7 +138,7 @@
                     <div data-role="navbar" >
                         <ul class="custom-navbar ui-grid-b" >
                             <li><a href="javascript:history.go(-1)" data-icon="back" data-direction="reverse" data-mini="true">Back</a></li>
-                            <li><a href="index.html" rel="external" data-mini="true" data-icon="home" data-direction="reverse">Home</a></li>
+                            <li><a href="homepage.html" rel="external" data-mini="true" data-icon="home" data-direction="reverse">Home</a></li>
                             <li></li>
                             <li></li>
                             <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
@@ -263,8 +263,8 @@
                         //debugger;
                         //If no cookie then make user login again
                         if (window.localStorage["GolfTeamId"] == undefined) {
-                            //$.mobile.changePage("index.html", { transition: "pop" });
-                            window.navigate("index.html");
+                            //$.mobile.changePage("homepage.html", { transition: "pop" });
+                            window.navigate("homepage.html");
                         }
                         else {
                             //debugger;
