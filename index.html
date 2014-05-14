@@ -126,7 +126,7 @@
                                 loadGolfTeams(window.localStorage["GolfTeamId"]);
                             }
                             else {
-                                loadGolfTeams("");
+                                $.mobile.changePage("pulogin.htm", { transition: "pop" });
                             }
                         });
 
