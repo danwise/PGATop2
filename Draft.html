@@ -23,7 +23,7 @@
 
                         //If no cookie then make user login again
                         if (window.localStorage["GolfTeamId"] == undefined) {
-                            window.navigate("homepage.html");
+                            window.navigate("Homepage.html");
                         }
 
                     });
@@ -33,7 +33,7 @@
                     }
 
                     function goHome() {
-                        $.mobile.changePage('homepage.html', { transition: "pop", reverse: true, changeHash: false, reloadPage: true });
+                        $.mobile.changePage('Homepage.html', { transition: "pop", reverse: true, changeHash: false, reloadPage: true });
                     }
 
                    
@@ -84,7 +84,7 @@
                             <div data-role="navbar">
                                  <ul class="custom-navbar ui-grid-b" >
                                     <li><a href="javascript:history.go(-1)" data-icon="back" data-direction="reverse" data-mini="true">Back</a></li>
-                                    <li><a href="homepage.html" rel="external" data-mini="true" data-icon="home">Home</a></li>
+                                    <li><a href="Homepage.html" rel="external" data-mini="true" data-icon="home">Home</a></li>
                                     <li><a href="draftresults.htm" rel="external" data-icon="grid" data-direction="reverse" data-mini="true">Draft Results</a></li>
                                     <li></li>
                                     <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
@@ -261,20 +261,20 @@
 
                                         //                                    $(location).attr('href', url);
                                         // alert("Redirect");
-                                        //$.mobile.changePage('../homepage.html', { transition: "pop", reverse: true, changeHash: false, reloadPage: true });
+                                        //$.mobile.changePage('../Homepage.html', { transition: "pop", reverse: true, changeHash: false, reloadPage: true });
                                         //                 draftSuccess(xml);
 
 
                                     },
                                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                                         alert("Local Error");
-                                        // $.mobile.changePage("homepage.htmll");
+                                        // $.mobile.changePage("Homepage.htmll");
                                     }
                                 });
                     }
                     function draftSuccess(xml) {
                        // refreshXml();
-//                        var url = "../homepage.html";
+//                        var url = "../Homepage.html";
 //                        $(location).attr('href', url);
 
                         $.mobile.changePage('draftresults.htm', { transition: "pop", reverse: true, changeHash: false, reloadPage: true });
