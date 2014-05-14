@@ -14,12 +14,19 @@
                  <script language = 'javascript'>
 
                      $(window).load(function () {
-                         $.mobile.loading('show');
+                         $.mobile.loading("show", {
+                             text: "Loading Top2",
+                             textVisible: true,
+                             theme: "b",
+                             html: ""
+                         });
+
+                       //  $.mobile.loading('show');
                      });
 
                      $(document).bind('pagechange', function (event) {
-                         $('.ui-page-active .eventHeader').text($.cookie("GolfEventName"));
-                         $('.ui-page-active .teamHeader').text($.cookie("GolfTeamName"));
+                         $('.ui-page-active .eventHeader').text(window.localStorage["GolfEventName"]);
+                         $('.ui-page-active .teamHeader').text(window.localStorage["GolfTeamName"]);
                      });
 
                      $(document).on('ready', function () {
@@ -56,12 +63,12 @@
                          //      debugger;
                          $.ajax(
                             {
-                                beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
-                                complete: function () { $.mobile.loading("hide"); }, //Hide spinner
+                                //beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
+                                //complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "GET",
                                 datatype: "xml",
                                 url: "http://www.pgatop2.com/Golf.EventDraft.asmx/TeamTop2",
-                                data: { GolfTeamId: $.cookie("GolfTeamId").toString() },
+                                data: { GolfTeamId: window.localStorage["GolfTeamId"] },
                                 success: function (xml) { xmlParser(xml); },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                                    // alert(errorThrown);
@@ -71,6 +78,7 @@
 
                      function xmlParser(xml) {
                          TeamTop2(xml);
+                         $.mobile.loading("hide"); 
                      }
                      
                 </script>

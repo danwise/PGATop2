@@ -1,17 +1,11 @@
 ﻿function EventInfo(xml) {
    // debugger;
-    if ($(xml).find("EventId").text() != $.cookie("GolfEventId")) {
-        if ($.cookie("GolfEventId") != null)
-            $.cookie("GolfEventId", null);
-
-        $.cookie("GolfEventId", $(xml).find("EventId").text(), { expires: 1000, path: '/' });
+    if ($(xml).find("EventId").text() != window.localStorage["GolfEventId"]) {
+        window.localStorage["GolfEventId"] = $(xml).find("EventId").text();
     }
 
-    if ($(xml).find("EventName").text() != $.cookie("GolfEventName")) {
-        if ($.cookie("GolfEventName") != null)
-            $.cookie("GolfEventName", null);
-
-        $.cookie("GolfEventName", $(xml).find("EventName").text(), { expires: 1000, path: '/' });
+    if ($(xml).find("EventName").text() != window.localStorage["GolfEventName"]) {
+        window.localStorage["GolfEventName"] = $(xml).find("EventName").text();
     }
 
     //$('#footerRefresh').text("Last Update: " + $.cookie("LastRefreshTime"));

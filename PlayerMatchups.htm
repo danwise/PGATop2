@@ -111,7 +111,7 @@
     <script language='javascript'>
         $(document).bind('pagechange', function (event) {
             //debugger;
-            $('#eventHeader').text($.cookie("GolfEventName"));
+            $('#eventHeader').text(window.localStorage["GolfEventName"]);
         });
 
         function refreshPage() {
@@ -262,14 +262,14 @@
 
                         //debugger;
                         //If no cookie then make user login again
-                        if ($.cookie("GolfTeamId") == null || $.cookie("GolfTeamName") == null) {
+                        if (window.localStorage["GolfTeamId"] == undefined) {
                             //$.mobile.changePage("index.html", { transition: "pop" });
                             window.navigate("index.html");
                         }
                         else {
                             //debugger;
-                            loadMatchups($.cookie("GolfTeamId").toString());
-                            loadGolfTeams($.cookie("GolfTeamId").toString());
+                            loadMatchups(window.localStorage["GolfTeamId"]);
+                            loadGolfTeams(window.localStorage["GolfTeamId"]);
                             $('.ui-page-active :jqmData(role=content)').trigger('create');
                         }
                     });
@@ -282,8 +282,8 @@
                         //   debugger;
                         $.ajax(
                         {
-                            beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
-                            complete: function () { $.mobile.loading("hide"); }, //Hide spinner
+                            //beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
+                            //complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                             type: "GET",
                             datatype: "xml",
                             url: "http://www.pgatop2.com/Golf.EventDraft.asmx/GolfTeamDelegates",

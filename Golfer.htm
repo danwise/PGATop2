@@ -61,8 +61,8 @@
                             //      debugger;
                             $.ajax(
                             {
-                                beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
-                                complete: function () { $.mobile.loading("hide"); }, //Hide spinner
+                               // beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
+                               // complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "GET",
                                 datatype: "xml",
                                 url: "http://www.pgatop2.com/Golf.EventDraft.asmx/Golfer",
@@ -76,6 +76,7 @@
 
                         function xmlParser(xml, GolferId) {
                             loadGolfer(xml, GolferId);
+                            $.mobile.loading("hide");
                         }
 
                         function refreshPage() {
@@ -88,7 +89,7 @@
                                  <ul class="custom-navbar ui-grid-b" >
                                     <li><a href="javascript:history.go(-1)" data-icon="back" data-direction="reverse" data-mini="true">Back</a></li>
                                     <li><a href="index.html" rel="external" data-mini="true" data-icon="home">Home</a></li>
-                                    <li><a href="draftresults.htm" rel="external" data-icon="grid" data-direction="reverse" data-mini="true">Draft Results</a></li>
+                                    <li><a href="PlayerMatchups.htm" rel="external" data-mini="true" data-icon="plus" class="ui-icon-proposed" id="A1">Matchups</a></li>
                                     <li><a href="#popupMenu" data-rel="popup" data-inline="true" data-icon="grid" data-mini="true">Scorecards</a></li>
                                     <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
                                 </ul>

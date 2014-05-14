@@ -9,12 +9,18 @@
 	            <script src='js/jquery.mobile-1.4.2.min.js'></script>
                 <script language="javascript">
                     $(document).bind('pagechange', function (event) {
-                        $('.ui-page-active .eventHeader').text($.cookie("GolfEventName"));
-                        $('.ui-page-active .teamHeader').text($.cookie("GolfTeamName"));
+                        $('.ui-page-active .eventHeader').text(window.localStorage["GolfEventName"]);
+                        $('.ui-page-active .teamHeader').text(window.localStorage["GolfTeamName"]);
                     });
 
                     $(window).load(function () {
-                        $.mobile.loading('show');
+                        $.mobile.loading("show", {
+                            text: "Loading Bestball",
+                            textVisible: true,
+                            theme: "b",
+                            html: ""
+                        });
+                        //$.mobile.loading('show');
                     });
 
                 </script>
@@ -51,12 +57,12 @@
                             //      debugger;
                             $.ajax(
                             {
-                                beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
-                                complete: function () { $.mobile.loading("hide"); }, //Hide spinner
+                               // beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
+                                //complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "GET",
                                 datatype: "xml",
                                 url: "http://www.pgatop2.com/Golf.EventDraft.asmx/BestBall",
-                                data: { GolfTeamId: $.cookie("GolfTeamId").toString(), Day: day },
+                                data: { GolfTeamId: window.localStorage["GolfTeamId"], Day: day },
                                 success: function (xml) { xmlParser(xml,day); },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                                  //   alert(errorThrown);
@@ -66,6 +72,7 @@
 
                         function xmlParser(xml, day) {
                             BestBall(xml, day);
+                            $.mobile.loading("hide"); 
                         }
 
                         function refreshPage() {
@@ -77,7 +84,7 @@
                                  <ul class="custom-navbar ui-grid-b" >
                                     <li><a href="javascript:history.go(-1)" data-icon="back" data-direction="reverse" data-mini="true">Back</a></li>
                                     <li><a href="index.html" rel="external" data-mini="true" data-icon="home">Home</a></li>
-                                    <li><a href="draftresults.htm" rel="external" data-icon="grid" data-direction="reverse" data-mini="true">Draft Results</a></li>
+                                    <li><a href="PlayerMatchups.htm" rel="external" data-mini="true" data-icon="plus" class="ui-icon-proposed" id="A1">Matchups</a></li>
                                     <li><a href="#popupMenu" data-rel="popup" data-inline="true" data-icon="grid" data-mini="true">Scorecards</a></li>
                                     <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
                                 </ul>

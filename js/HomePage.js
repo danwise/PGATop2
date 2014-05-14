@@ -102,7 +102,7 @@ function LoadMenu(xml) {
                                      "onclick": "javascript:liClick('/DraftRoom/Draft.html')"
                                  }).append($('<a/>',
                                  {
-                                     "href": "/DraftRoom/Draft.html",
+                                     "href": "Draft.html",
                                      "data-transition": "fade",
                                      "text": "Draft Room",
                                      "rel" : "external"

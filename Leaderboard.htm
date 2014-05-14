@@ -10,12 +10,19 @@
 	            <script src='js/jquery.mobile-1.4.2.min.js'></script>
                  <script language="javascript">
                      $(document).bind('pagechange', function (event) {
-                         $('.ui-page-active .eventHeader').text($.cookie("GolfEventName"));
-                         $('.ui-page-active .teamHeader').text($.cookie("GolfTeamName"));
+                         $('.ui-page-active .eventHeader').text(window.localStorage["GolfEventName"]);
+                         //$('.ui-page-active .teamHeader').text($.cookie("GolfTeamName"));
                      });
 
                      $(window).load(function () {
-                         $.mobile.loading('show');
+                         $.mobile.loading("show", {
+                             text: "Loading Leaderboard",
+                             textVisible: true,
+                             theme: "b",
+                             html: ""
+                         });
+
+                         //$.mobile.loading('show');
                      });
 
 
@@ -73,9 +80,9 @@
                     <script type="text/javascript">
                         $("#leaderboard").on('pageinit', function () {
                             // loadXml('Leaderboard', '');
-                            loadGolfers($.cookie("GolfTeamId").toString());
-                            loadGolfTeams($.cookie("GolfTeamId").toString());
-                            $('#eventHeader').text($.cookie("GolfEventName").toString());
+                            loadGolfers(window.localStorage["GolfTeamId"]);
+                            loadGolfTeams(window.localStorage["GolfTeamId"]);
+                            $('#eventHeader').text(window.localStorage["GolfEventName"]);
                         });
 
                         $("#leaderboard").on('pageshow', function () {
@@ -93,8 +100,8 @@
                             //    debugger;
                             $.ajax(
                             {
-                                beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
-                                complete: function () { $.mobile.loading("hide"); }, //Hide spinner
+                                //beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
+                                //complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "GET",
                                 datatype: "xml",
                                 url: "http://www.pgatop2.com/Golf.EventDraft.asmx/Leaderboard",
@@ -108,16 +115,17 @@
 
                         function xmlParser(xml, day) {
                             Leaderboard(xml);
+                            $.mobile.loading("hide");
                         }
 
                         function refreshPage() {
                             location.reload();
                         }
 
-                        function betPopup(playerMatchupId, golfTeamId) {
-                            // debugger;
-                            $.mobile.changePage("puSideBet.htm?PlayerMatchupId=" + playerMatchupId + "&GolfTeamId=" + golfTeamId, { role: "dialog" });
-                        }
+//                        function betPopup(playerMatchupId, golfTeamId) {
+//                            // debugger;
+//                            $.mobile.changePage("puSideBet.htm?PlayerMatchupId=" + playerMatchupId + "&GolfTeamId=" + golfTeamId, { role: "dialog" });
+//                        }
 
                         function loadGolfTeams(golfTeamId) {
                             //   debugger;

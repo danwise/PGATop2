@@ -24,17 +24,17 @@
                 <script src="js/GetURLParameters.js"></script>
                 <script language = 'javascript'>
 
-                     $(document).bind('pagechange', function (event) {
-                          //debugger;
-                          //loadXml('Event', '');
-                         $('.ui-page-active .eventHeader').text($.cookie("GolfEventName"));
-                         $('.ui-page-active .teamHeader').text($.cookie("GolfTeamName"));
-                         $('#Title').text($.cookie("GolfEventName"));
+                    $(document).bind('pagechange', function (event) {
+                       // debugger;
+                        //loadXml('Event', '');
+                        var EventName = window.localStorage["GolfEventName"];
+                        $('.ui-page-active .eventHeader').text(EventName);
+                        $('#Title').text(EventName);
 
-                         $('.ui-page-active :jqmData(role=collapsible)').collapsible();
-                         $('.ui-page-active .ui-listview').listview('refresh');
-                         $('.ui-page-active :jqmData(role=content)').trigger('create');
-                     });
+                        $('.ui-page-active :jqmData(role=collapsible)').collapsible();
+                        $('.ui-page-active .ui-listview').listview('refresh');
+                        $('.ui-page-active :jqmData(role=content)').trigger('create');
+                    });
 
                      $(document).on('ready', function () {
 
@@ -48,30 +48,47 @@
                      });
 
                      $(window).load(function () {
-                         $.mobile.loading('show');
+                         $.mobile.loading("show", {
+                             text: "Loading Event",
+                             textVisible: true,
+                             theme: "b",
+                             html: ""
+                         });
                      });
 
 
                      $(document).on('pagebeforeshow', function (event, ui) {
-                       //  debugger;
-                         var urlParameters = getUrlVars();
-                         if (urlParameters != "") {
-                             if (urlParameters.GolfTeamId != null) {
-                                 loadTeam(urlParameters.GolfTeamId);
-                             }
-
-                             if (urlParameters.Reload != null && $.cookie("Reload") == null) {
-                                 //$.mobile.changePage("index.html", { transition: "pop" });
-                                 $.cookie("Reload", "true", { expires: 1, path: '/' });
-                                 location.reload();
-                             }
-                         }
-                         else {
+                         //  debugger;
+                         if (window.localStorage["GolfTeamId"] == undefined) {
                              if ($.cookie("GolfTeamId") == null || $.cookie("GolfTeamName") == null) {
                                  $.mobile.changePage("pulogin.htm", { transition: "pop" });
                              }
+                             else {
+                                 window.localStorage["GolfTeamId"] = $.cookie("GolfTeamId");
+                                 window.localStorage["GolfTeamName"] = $.cookie("GolfTeamName");
+
+                             }
                          }
                      });
+
+//                         var urlParameters = getUrlVars();
+//                         if (urlParameters != "") {
+//                             if (urlParameters.GolfTeamId != null) {
+//                                 loadTeam(urlParameters.GolfTeamId);
+//                             }
+
+//                             if (urlParameters.Reload != null && $.cookie("Reload") == null) {
+//                                 //$.mobile.changePage("index.html", { transition: "pop" });
+//                                 $.cookie("Reload", "true", { expires: 1, path: '/' });
+//                                 location.reload();
+//                             }
+//                         }
+//                         else {
+//                             if ($.cookie("GolfTeamId") == null || $.cookie("GolfTeamName") == null) {
+//                                 $.mobile.changePage("pulogin.htm", { transition: "pop" });
+//                             }
+//                         }
+//                     });
 
 
                     
@@ -102,9 +119,9 @@
 
                         $("#Main").on('pagecreate', function () {
                            // debugger;
-                            if ($.cookie("GolfTeamName") != null) {
-                                loadPage($.cookie("GolfTeamId").toString());
-                                loadGolfTeams($.cookie("GolfTeamId").toString());
+                            if (window.localStorage["GolfTeamId"] != undefined) {
+                                loadPage(window.localStorage["GolfTeamId"]);
+                                loadGolfTeams(window.localStorage["GolfTeamId"]);
                             }
                             else {
                                 loadGolfTeams("");
@@ -120,16 +137,16 @@
                             $('.ui-page-active .ui-listview').listview('refresh');
                             $('.ui-page-active :jqmData(role=content)').trigger('create');
 
-                            $('.ui-page-active .eventHeader').text($.cookie("GolfEventName"));
-                            $('.ui-page-active .teamHeader').text($.cookie("GolfTeamName"));   
+                            $('.ui-page-active .eventHeader').text(window.localStorage["GolfEventName"]);
+                             
                         });
 
                         function loadPage(golfTeamId) {
                             //debugger;
                             $.ajax(
                         {
-                            beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
-                            complete: function () { $.mobile.loading("hide"); }, //Hide spinner
+                            //beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
+                            //complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                             type: "GET",
                             datatype: "xml",
                             url: "http://www.pgatop2.com/Golf.EventDraft.asmx/HomePageLeaders",
@@ -157,6 +174,8 @@
                             $("#SkinsTotalSat").text($(xml).find("SkinsCount_Sat").text());
                             $("#SkinsTotalSun").text($(xml).find("SkinsCount_Sun").text());
                             $("#LeaderboardLeader").text($(xml).find("GolferLeaderboard").first().text());
+
+                            $.mobile.loading("hide"); 
                         }
 
                         
@@ -176,8 +195,8 @@
                             //   debugger;
                             $.ajax(
                         {
-                            beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
-                            complete: function () { $.mobile.loading("hide"); }, //Hide spinner
+                          //  beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
+                           // complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                             type: "GET",
                             datatype: "xml",
                             url: "http://www.pgatop2.com/Golf.EventDraft.asmx/GolfTeamDelegates",
@@ -192,11 +211,12 @@
                         }
 
                         function populateGolfTeams(xml) {
+                            //debugger;
                             var index = 0;
                             var i = 0;
                             var loggedInGolfTeamId;
-                            if($.cookie("GolfTeamId") != null)
-                                loggedInGolfTeamId = $.cookie("GolfTeamId").toUpperCase();
+                            if(window.localStorage["GolfTeamId"] != undefined)
+                                loggedInGolfTeamId = window.localStorage["GolfTeamId"].toUpperCase();
 
                             $(xml).find("GolfTeam").each(
                                 function () {
@@ -252,7 +272,7 @@
                             
                             <div  data-role='footer' class="ui-grid-a" style="height:50px" data-theme='b'>
                                 <div data-role="navbar">
-                                    <div id="pageHeaderHeader1"  class="ui-block-b"></div> 
+                                    <div id="pageHeaderHeader1"  class="eventHeader"></div> 
                                     <div id="pageHeaderFooter1" class="ui-block-b ui-btn-right">
                                     <div data-role="fieldcontain" data-theme='b'> 
                                                 <select id="teamsappointed" class="select_choice" data-native-menu="false" id="Select1" data-theme='b' >
@@ -271,8 +291,10 @@
                     $("#teamsappointed").on("change", function () {
                         //debugger;
                         var GolfInfo = $(this).val().split(":");
-                        $.cookie("GolfTeamId", GolfInfo[0], { expires: 1000, path: '/' });
-                        $.cookie("GolfTeamName", GolfInfo[1], { expires: 1000, path: '/' });
+                        window.localStorage["GolfTeamId"] = GolfInfo[0];
+                        window.localStorage["GolfTeamName"] = GolfInfo[1];
+                        //$.cookie("GolfTeamId", GolfInfo[0], { expires: 1000, path: '/' });
+                        //$.cookie("GolfTeamName", GolfInfo[1], { expires: 1000, path: '/' });
                         $("#HomeMenu").empty();
                         loadPage(GolfInfo[0]);
                         $('.ui-page-active :jqmData(role=content)').trigger('create');

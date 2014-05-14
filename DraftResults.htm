@@ -11,14 +11,21 @@
                 
                 <script language="javascript">
                     $(document).bind('pagechange', function (event) {
-                        $('.ui-page-active .eventHeader').text($.cookie("GolfEventName"));
-                        $('.ui-page-active .teamHeader').text($.cookie("GolfTeamName"));
+                        $('.ui-page-active .eventHeader').text(window.localStorage["GolfEventName"]);
+                        $('.ui-page-active .teamHeader').text(window.localStorage["GolfTeamName"]);
                     });
 
 
 
                     $(window).load(function () {
-                        $.mobile.loading('show');
+                        $.mobile.loading("show", {
+                            text: "Loading Draft Results",
+                            textVisible: true,
+                            theme: "b",
+                            html: ""
+                        });
+
+                      //  $.mobile.loading('show');
                     });
 
 
@@ -71,12 +78,12 @@
                             //      debugger;
                             $.ajax(
                             {
-                                beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
-                                complete: function () { $.mobile.loading("hide"); }, //Hide spinner
+                               // beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
+                               // complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "POST",
                                 datatype: "xml",
                                 url: "http://www.pgatop2.com/Golf.EventDraft.asmx/DraftResults",
-                                data: { GolfTeamId: $.cookie("GolfTeamId").toString() },
+                                data: { GolfTeamId: window.localStorage["GolfTeamId"] },
                                 success: function (xml) { xmlParser(xml); },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                                     alert(errorThrown);
@@ -86,6 +93,7 @@
 
                         function xmlParser(xml) {
                             buildDraftResults(xml);
+                            $.mobile.loading("hide"); 
                         }
 
                         function refreshPage() {
@@ -93,7 +101,7 @@
                         }
 
                         function goHome() {
-                            $.mobile.changePage('../index.html', { transition: "pop", reverse: true, changeHash: false, reloadPage: true});
+                            $.mobile.changePage('index.html', { transition: "pop", reverse: true, changeHash: false, reloadPage: true});
                         }
 
                         function navigatePage(url) {
