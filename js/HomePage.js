@@ -152,7 +152,7 @@ function LoadMenu(xml) {
                                      "onclick": "javascript:liClick('teamTop2.htm')"
                                  }).append($('<a/>',
                                  {
-                                     "href": "teamTop2.htm",
+                                     "href": "TeamTop2.htm",
                                      "data-transition": "slide",
                                      "text": "Team Top 2",
                                      "rel": "external"

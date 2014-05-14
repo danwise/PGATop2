@@ -260,7 +260,7 @@
 
                     $("#matchups").on('pageinit', function () {
 
-                        //debugger;
+                      //  debugger;
                         //If no cookie then make user login again
                         if (window.localStorage["GolfTeamId"] == undefined) {
                             //$.mobile.changePage("Homepage.html", { transition: "pop" });
@@ -300,7 +300,7 @@
                     function populateGolfTeams(xml) {
                         var index = 0;
                         var i = 0;
-                        var loggedInGolfTeamId = $.cookie("GolfTeamId").toUpperCase();
+                        var loggedInGolfTeamId = window.localStorage["GolfTeamId"].toUpperCase();
                         $(xml).find("GolfTeam").each(
                         function () {
                             var xmlGolfTeamId = $(this).find("GolfTeamId").first().text().toUpperCase();

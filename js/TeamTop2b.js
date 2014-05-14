@@ -17,7 +17,7 @@
                                         {
                                             //'data-role': 'list-divider',
                                             'data-role': 'collapsible',
-                                            'data-theme': 'e',
+                                          //  'data-theme': 'e',
                                             'data-collapsed-icon': 'arrow-r',
                                             'data-expanded-icon': 'arrow-d'
                                         })

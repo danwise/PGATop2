@@ -205,17 +205,21 @@ function Success(PlayerMatchupId, golfTeamId) {
 
 
 function loadMatchups(golfTeamId) {
-    //      debugger;
-    $.ajax(
+          //debugger;
+          $.ajax(
             {
-                beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
-                complete: function () { $.mobile.loading("hide"); }, //Hide spinner
+                //   beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
+                //  complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                 type: "GET",
                 datatype: "xml",
                 url: "http://www.pgatop2.com/Golf.EventDraft.asmx/PlayerMatchups2",
                 data: { GolfTeamId: golfTeamId },
-                success: function (xml) { xmlParser(xml, golfTeamId); },
+                success: function (xml) {
+                    xmlParser(xml, golfTeamId);
+                    $.mobile.loading("hide");
+                    },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
+                  ///  debugger;
                     // alert(errorThrown);
                 }
             });
