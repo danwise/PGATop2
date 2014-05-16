@@ -24,6 +24,8 @@
 }
 
 
+
+
 function LoadMenu2(xml) {
    // debugger;
     $(xml).find("LeagueProduct")
@@ -32,17 +34,17 @@ function LoadMenu2(xml) {
              default:
                  $('#HomeMenu').append($('<li/>',
                                  {
-                                     "onclick": "javascript:liClick('" + $(this).find("url").text() + "')"
+                                     "onclick": "javascript:liClick('" + $(this).find("url").text() + "','" + $(this).find("Day").text() + "')"
                                  }).append($('<a/>',
                                  {
                                      "href": $(this).find("url").text(),
                                      "data-transition": "slide",
                                      "text": $(this).find("ProductName").text(),
                                      "rel": "external"
-                                 })).append($('<p/>',
+                                 }).append($('<p/>',
                                  {
                                      "text": $(this).find("Leader").text()
-                                 }).css("padding-left", "30px")));
+                                 }).css("padding-left", "30px"))));
 
                  break;
 
@@ -50,7 +52,7 @@ function LoadMenu2(xml) {
              case "SkinsSun":
                  $('#HomeMenu').append($('<li/>',
                                  {
-                                     "onclick": "javascript:liClick('" + $(this).find("url").text() + "')"
+                                     "onclick": "javascript:liClick('" + $(this).find("url").text() + "','" + $(this).find("Day").text() + "')"
                                  }).append($('<a/>',
                                  {
                                      "href": $(this).find("url").text(),
@@ -99,7 +101,7 @@ function LoadMenu(xml) {
             case "DraftRoom":
                 $('#HomeMenu').append($('<li/>',
                                  {
-                                     "onclick": "javascript:liClick('/DraftRoom/Draft.html')"
+                                     "onclick": "javascript:liClick('Draft.html')"
                                  }).append($('<a/>',
                                  {
                                      "href": "Draft.html",
@@ -149,7 +151,7 @@ function LoadMenu(xml) {
             case "TeamTop2":
                 $('#HomeMenu').append($('<li/>',
                                  {
-                                     "onclick": "javascript:liClick('teamTop2.htm')"
+                                     "onclick": "javascript:liClick('TeamTop2.htm')"
                                  }).append($('<a/>',
                                  {
                                      "href": "TeamTop2.htm",

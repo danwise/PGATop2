@@ -23,7 +23,7 @@
     /// <summary>
     /// Summary description for WebService1
     /// </summary>
-    [WebService(Namespace = "http://www.pgatop2.com/")]
+    [WebService(Namespace = "")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 
     [System.ComponentModel.ToolboxItem(false)]
@@ -493,7 +493,7 @@
                                         Leader = TeamTop2Leader,
                                         ProductName = lp.ProductName,
                                         ProductNumber = lp.ProductNumber,
-                                        url = "teamTop2.htm",
+                                        url = "TeamTop2.htm",
                                     };
 
                                     LeaderBoard.LeagueProducts.Add(tt2);
@@ -623,7 +623,8 @@
                                             Count = iSkinsSun,
                                             ProductName = lp.ProductName,
                                             ProductNumber = lp.ProductNumber,
-                                            url = "Skins.htm?Day=Sun",
+                                            url = "Skins.htm",
+                                            Day = "Sun"
                                         };
                                         LeaderBoard.LeagueProducts.Add(SkinsSun);
                                     }
@@ -659,7 +660,8 @@
                                             Count = iSkinsSat,
                                             ProductName = lp.ProductName,
                                             ProductNumber = lp.ProductNumber,
-                                            url = "Skins.htm?Day=Sat",
+                                            url = "Skins.htm",
+                                            Day = "Sun"
                                         };
                                         LeaderBoard.LeagueProducts.Add(SkinsSat);
                                     }
@@ -792,7 +794,8 @@
                                             Leader = sBestBallLeader_36,
                                             ProductName = lp.ProductName,
                                             ProductNumber = lp.ProductNumber,
-                                            url = "BestBall.htm?Day=36",
+                                            url = "BestBall.htm",
+                                            Day = "36"
                                         };
                                         LeaderBoard.LeagueProducts.Add(BB36);
                                     }
@@ -823,7 +826,8 @@
                                             Leader = sBestBallLeader_Fri,
                                             ProductName = lp.ProductName,
                                             ProductNumber = lp.ProductNumber,
-                                            url = "BestBall.htm?Day=Fri",
+                                            url = "BestBall.htm",
+                                            Day = "Fri"
                                         };
                                         LeaderBoard.LeagueProducts.Add(BBFri);
                                     }
@@ -854,7 +858,8 @@
                                         Leader = sBestBallLeader_Thurs,
                                         ProductName = lp.ProductName,
                                         ProductNumber = lp.ProductNumber,
-                                        url = "BestBall.htm?Day=Thurs",
+                                        url = "BestBall.htm",
+                                        Day = "Thurs"
                                     };
 
                                     LeaderBoard.LeagueProducts.Add(BBTh);
@@ -1005,7 +1010,7 @@
                                     RoundScore = (r.zz_Score == null ? 0 : r.zz_Score.Value),
                                     TodaysRoundStarted = (r.zz_CompletedHoles == null ? false : (r.zz_CompletedHoles.Value != 0 ? true : false)),
                                     TournamentRank = (r.zz_EventRank == null ? "" : r.zz_EventRank),
-                                    CutLineRank = (r.zz_EventRank == null ? 99 : 1), //int.Parse(r.zz_EventRank.Replace("T", ""))),
+                                    CutLineRank = (r.zz_EventRank == null ? 99 : int.Parse(r.zz_EventRank.Replace("T", ""))),
                                     DayNumber = (r.zz_Day == null ? 0 : shared.iGetDay(r.zz_Day)),
                                     isCutLine = false,
                                     //// ShotTrackerUrl = (g.zz_pgatourId ==null?"":"http://www.pgatour.com/content/pgatour/shottracker.html#/current/r000/1/player/" + g.zz_pgatourId + "/"),
@@ -1057,6 +1062,7 @@
                     //if (MaxRound.DayNumber == 2 && Event.CutLine != 0) //Only show cut line on Friday
                     if (MaxRound.DayNumber == 2) //Only show cut line on Friday
                     {
+                        int MaxScoreUnder70 = Golfers.Where(g => g.CutLineRank <= 71).Max(g => g.TotalScore);
                         int CutLineScore = Golfers.Where(g => g.CutLineRank <= 71).Max(g => g.TotalScore);
                         Golfer CutLine = new Golfer
                         {
@@ -2156,10 +2162,12 @@
                 //        ah.CalculatedHandicapRank = HandicapHole.CalculatedHandicapRank;
                 //});
 
-                allGolfers.Golfers = AllHoles.GroupBy(s => new { s.HoleGolferId, s.HoleGolfer }).Select(y => new Golfer()
+                allGolfers.Golfers = AllHoles.GroupBy(s => new { s.HoleGolferId, s.HoleGolfer, s.HoleGolfTeam, s.GolfTeamId }).Select(y => new Golfer()
                 {
                     GolferId = y.Key.HoleGolferId,
                     GolferName = y.Key.HoleGolfer,
+                    GolferGolfTeam = y.Key.HoleGolfTeam,
+                    GolfTeamId = y.Key.GolfTeamId
                 }).ToList<Golfer>();
 
                 allGolfers.Golfers.ForEach(g =>

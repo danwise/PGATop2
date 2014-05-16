@@ -4,16 +4,10 @@
         return $(this).find('GolferId').first().text() == GolferId;
     }).each(
                             function () {
-                                $('#hGolfer').text($(this).find('GolferName').first().text());
+                                $('#pageHeader').text($(this).find('GolferName').first().text());
+                                $('#teamHeader').text($(this).find('GolferGolfTeam').first().text());
 
                                 $(this).find("Round")
-//                                .sort(function (a, b) {
-//                                    var aScore = parseInt(a.getElementsByTagName("DayNumber")[a.getElementsByTagName("DayNumber").length - 1].childNodes[0].nodeValue);
-//                                    var bScore = parseInt(b.getElementsByTagName("DayNumber")[b.getElementsByTagName("DayNumber").length - 1].childNodes[0].nodeValue);
-//                                    if (aScore > bScore) return -1;
-//                                    if (aScore < bScore) return 1;
-//                                    return 0
-//                                })
                                 .each(
                                 function () {
                                     $('#ulRounds').append($('<li/>', {})
@@ -29,7 +23,7 @@
                                         .append($('<p/>',
                                         {
                                             //'text': "Score: " + ($(this).find("RoundScore").text() == "0" ? "E" : $(this).find("RoundScore").text()),
-                                            'text' : todayText($(this)),
+                                            'text': todayText($(this)),
                                             'font-weight': 'bold'
                                         }))
                                         .append($('<p/>',
@@ -43,6 +37,7 @@
                                             'text': statusText($(this))
                                         }))));
 
+                                    //  debugger;
                                     var $roundPage =
                                             $("#body").append($('<div/>',
                                                     {
@@ -53,39 +48,39 @@
                                                         .append($('<div/>',
                                                     {
                                                         'data-role': 'header',
-                                                        'data-theme': 'e'
+                                                        'data-theme': 'a'
                                                     })
                                                     .append($(jQuery(jQuery("#headerTemplate").html().replace("pageHeaderHeader1", "pageHeaderHeader" + $(this).find("RoundId").first().text()).replace("pageHeaderFooter1", "pageHeaderFooter" + $(this).find("RoundId").first().text())))))
                                                     .append($('<div/>',
                                                     {
                                                         'data-role': 'content'
                                                     })
-                                                    .append($('<h3/>',
-                                                    {
-                                                        'text': $(this).find("HoleGolfer").first().text() + " - " + $(this).find("RoundName").first().text()
-                                                    }))
                                                     .append($('<ul/>',
                                                     {
                                                         'data-inset': 'true',
                                                         'data-role': 'listview',
-                                                        'id': 'roundListing' + $(this).find("RoundId").first().text()
+                                                        'id': 'roundListing' + $(this).find("RoundId").first().text(),
+                                                        'data-theme': 'c'
                                                     }))));
 
-
+                                    debugger;
                                     $roundPage.bind('pageinit', function () {
-                                        //                                                                $('#' + 'roundListing' + $(this).find("RoundId").first().text()).listview('refresh');
-                                        $('#' + 'pageHeaderHeader' + $(this).find("RoundId").first().text()).append($('<h4/>', { 'text': $.cookie("GolfEventName") }).css("text-align", "left"));
-                                        $('#' + 'pageHeaderFooter' + $(this).find("RoundId").first().text()).append($('<h6/>', { 'text': $.cookie("GolfTeamName") }).css("text-align", "right").css("padding-right", ".5cm").css("text-valign", "top"));
+                                        $('#' + 'pageHeaderHeader' + $(this).find("RoundId").first().text()).text(window.localStorage["GolferName"] + " - " + $(this).find("RoundName").first().text());
+                                        $('#' + 'pageHeaderFooter' + $(this).find("RoundId").first().text()).text(window.localStorage["GolfTeamName"]);
+                                        //                
+                                        //                                                $('#' + 'roundListing' + $(this).find("RoundId").first().text()).listview('refresh');
+                                        //                                        $('#' + 'pageHeaderHeader' + $(this).find("RoundId").first().text()).append($('<h4/>', { 'text': window.localStorage["GolferName"] }).css("text-align", "left"));
+                                        //                                        $('#' + 'pageHeaderFooter' + $(this).find("RoundId").first().text()).append($('<h6/>', { 'text': window.localStorage["GolfTeamName"] }).css("text-align", "right").css("padding-right", ".5cm").css("text-valign", "top"));
                                     });
 
                                     $(this).find("Hole")
-//                                    .sort(function (a, b) {
-//                                        var aHole = parseInt(a.getElementsByTagName("HoleNumber")[a.getElementsByTagName("HoleNumber").length - 1].childNodes[0].nodeValue);
-//                                        var bHole = parseInt(b.getElementsByTagName("HoleNumber")[b.getElementsByTagName("HoleNumber").length - 1].childNodes[0].nodeValue);
-//                                        if (aHole > bHole) return 1;
-//                                        if (aHole < bHole) return -1;
-//                                        return 0
-//                                    })
+                                    //                                    .sort(function (a, b) {
+                                    //                                        var aHole = parseInt(a.getElementsByTagName("HoleNumber")[a.getElementsByTagName("HoleNumber").length - 1].childNodes[0].nodeValue);
+                                    //                                        var bHole = parseInt(b.getElementsByTagName("HoleNumber")[b.getElementsByTagName("HoleNumber").length - 1].childNodes[0].nodeValue);
+                                    //                                        if (aHole > bHole) return 1;
+                                    //                                        if (aHole < bHole) return -1;
+                                    //                                        return 0
+                                    //                                    })
                                     .each(
                                                             function () {
                                                                 $('#roundListing' + $(this).find("RoundId").text()).append($('<li/>', {})
@@ -103,8 +98,8 @@
                                                                     })));
                                                             }
                                                      );
-                                                            });
-                                                            $('.ui-page-active .ui-listview').listview('refresh');
+                                });
+                                $('.ui-page-active .ui-listview').listview('refresh');
                             });
     //            });
 

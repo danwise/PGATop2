@@ -8,11 +8,13 @@
                 <script src='js/jquery-1.11.1.min.js'></script>
 	            <script src='js/jquery.mobile-1.4.2.min.js'></script>
                 <script language="javascript">
+
+
                     $(window).load(function () {
                         $.mobile.loading("show", {
-                            text: "Loading Rounds",
+                            text: window.localStorage["GolferName"],
                             textVisible: true,
-                            theme: "b",
+                            theme: "d",
                             html: ""
                         });
                     });
@@ -22,30 +24,45 @@
 //                            $('html,body').animate({ scrollTop: $('#' + urlHash).offset().top }, 1000);
 //                        });
                 </script>
+                //leave the headerTemplate here!
+                <script type="text/template" id="headerTemplate">
+                <div data-role='header' data-position="fixed" data-theme='e'>
+                        <div data-role="navbar">
+                                <ul class="custom-navbar ui-grid-b" >
+                                <li><a href="javascript:history.go(-1)" data-icon="back" data-direction="reverse" data-mini="true">Back</a></li>
+                                <li><a href="Homepage.html" rel="external" data-mini="true" data-icon="home">Home</a></li>
+                                <li><a href="PlayerMatchups.htm" rel="external" data-mini="true" data-icon="plus" class="ui-icon-proposed" id="A1">Matchups</a></li>
+                                <li><a href="Leaderboard.htm" rel="external" data-inline="true" data-mini="true" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-leaderboard">Leaderboard</a></li>
+                                <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
+                            </ul>
+                        </div>
+                        <div  data-role='footer' class="ui-grid-a" data-theme='c'>
+                            <div data-role="navbar">
+                                <ul class="custom-navbar ui-grid-a" >
+                                    <li id="pageHeaderHeader" style="text-align:left; font-size:small"></li>
+                                    <li id="pageHeaderFooter" style="text-align:right; font-size:x-small"></li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+                </script>
         </head>
             <body id="body">    
                 <!-- TeamTop2 -->
                 <div data-role='page' id="golfer"> 
                     <script src="js/LoadXml.js"></script>
                     <script src="js/LoadGolfer.js"></script>
-                    <script src="js/jquery.cookie.js"></script>
-                    <script src="js/GetURLParameters.js"></script>
                     <script type="text/javascript">
-                        $("#golfer").on('pageinit', function () {
-                                                      //  debugger;
-                            var urlParameters = getUrlVarsPage('golfer');
-                            var GolferId;
-                            var GolfTeamId;
-                            if (urlParameters != "") {
-                                if (urlParameters.GolferId != null) {
-                                    GolferId = urlParameters.GolferId
-                                }
-                                if (urlParameters.GolfTeamId != null) {
-                                    GolfTeamId = urlParameters.GolfTeamId
-                                }
-                            }
+//                        $(document).bind('pagechange', function (event) {
+//                            $('.ui-page-active .eventHeader').text(window.localStorage["GolfEventName"]);
+//                            $('.ui-page-active .teamHeader').text(window.localStorage["GolfTeamName"]);
+//                        });
 
-                            GetGolferXML(GolferId, GolfTeamId);
+                        $("#golfer").on('pageinit', function () {
+                            //  debugger;
+                            GetGolferXML(window.localStorage["GolferId"], window.localStorage["GolferGolfTeamId"]);
+                            $('.ui-page-active .pageHeader').text(window.localStorage["GolferName"]);
+                            $('.ui-page-active .teamHeader').text(window.localStorage["GolfTeamName"]);
                         });
 
 
@@ -65,7 +82,7 @@
                                // complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "GET",
                                 datatype: "xml",
-                                url: "http://www.pgatop2.com/Golf.EventDraft.asmx/Golfer",
+                                url: "Golf.EventDraft.asmx/Golfer",
                                 data: { GolfTeamId: golfTeamId, GolferId: golferId },
                                 success: function (xml) { xmlParser(xml, golferId); },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -84,26 +101,29 @@
                         }
                      
                     </script>
+
                     <div data-role='header' id="Div8" data-theme='e'>
                          <div data-role="navbar">
                                  <ul class="custom-navbar ui-grid-b" >
                                     <li><a href="javascript:history.go(-1)" data-icon="back" data-direction="reverse" data-mini="true">Back</a></li>
                                     <li><a href="Homepage.html" rel="external" data-mini="true" data-icon="home">Home</a></li>
                                     <li><a href="PlayerMatchups.htm" rel="external" data-mini="true" data-icon="plus" class="ui-icon-proposed" id="A1">Matchups</a></li>
-                                    <li><a href="#popupMenu" data-rel="popup" data-inline="true" data-icon="grid" data-mini="true">Scorecards</a></li>
+                                    <li><a href="Leaderboard.htm" rel="external" data-inline="true" data-mini="true" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-leaderboard">Leaderboard</a></li>
                                     <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
                                 </ul>
                             </div>
-                            <div  data-role='footer' class="ui-grid-a" style="height:50px" data-theme='b'>
+                            <div  data-role='footer' class="ui-grid-a" data-theme='c'>
                                 <div data-role="navbar">
-                                    <div id="Div1"  class="ui-block-b"></div> 
-                                    <div id="Div2" class="ui-block-b ui-btn-right"></div>
+                                    <ul class="custom-navbar ui-grid-a" >
+                                        <li id="pageHeader" style="text-align:left; font-size:small"></li>
+                                        <li id="teamHeader" style="text-align:right; font-size:x-small"></li>
+                                    </ul>
+                                </div>
                             </div>
                     </div>
                     <div data-role='content'>
-                            <ul data-role='listview' id="ulRounds" data-inset='true' data-theme="c"></ul>
-                     </div>
-                     <div data-role='footer'></div>            
+                            <ul data-role='listview' id="ulRounds" data-inset='true' data-theme="b"></ul>
+                     </div>   
                 </div>
 
               

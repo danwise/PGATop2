@@ -59,7 +59,7 @@
                                 complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "GET",
                                 datatype: "xml",
-                                url: "http://www.pgatop2.com/Golf.EventDraft.asmx/Top4",
+                                url: "Golf.EventDraft.asmx/Top4",
                                 data: { GolfTeamId: $.cookie("GolfTeamId").toString() },
                                 success: function (xml) { xmlParser(xml); },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {

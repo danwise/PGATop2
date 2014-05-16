@@ -1,25 +1,25 @@
-﻿function Leaderboard(xml) {
+﻿function gotoGolfer(GolferId,GolfTeamId,GolferName) {
+   // debugger;
+    window.localStorage["GolferId"] = GolferId;
+    window.localStorage["GolferGolfTeamId"] = GolfTeamId;
+    window.localStorage["GolferName"] = GolferName;
+    var url = "Golfer.htm";
+    $(location).attr('href', url);
+}
+function Leaderboard(xml) {
     $(xml).find("Golfer")
-    //sorted in xml now for increased performance.
-//    .sort(function (a, b) {
-//        var aScore = parseInt(a.getElementsByTagName("GolferScore")[a.getElementsByTagName("GolferScore").length - 1].childNodes[0].nodeValue);
-//        var bScore = parseInt(b.getElementsByTagName("GolferScore")[b.getElementsByTagName("GolferScore").length - 1].childNodes[0].nodeValue);
-//            if (aScore > bScore) return 1;
-//            if (aScore < bScore) return -1;
-//            return 0
-//        })
     .each
                             (
                                 function (index) {
-                                    if (index == 0 && $(this).find("GolferScore").first().text() != "") {
-                                        $("#LeaderboardLeader").text($(this).find("GolferName").first().text() + "/" + $(this).find("GolferGolfTeam").first().text() + " @ " + $(this).find("GolferScore").last().text());
-                                    }
+//                                    if (index == 0 && $(this).find("GolferScore").first().text() != "") {
+//                                        $("#LeaderboardLeader").text($(this).find("GolferName").first().text() + "/" + $(this).find("GolferGolfTeam").first().text() + " @ " + $(this).find("GolferScore").last().text());
+//                                    }
 
                                     $("#ulLeaderboard")
                                     .append($('<li/>', {})
                                         .append($('<a/>',
                                         {
-                                            'href': $(this).find("GolferPageUrl").first().text(),
+                                            'href': "javascript:gotoGolfer('" + $(this).find("GolferId").first().text() + "','" + $(this).find("GolfTeamId").first().text() + "','" + $(this).find("GolferName").first().text() + "')",
                                             //'href' :$(this).find("ShotTrackerUrl").first().text(),
                                             'data-transition': 'slide',
                                             'rel' : 'external'
@@ -27,7 +27,7 @@
                                         .append($('<img/>',
                                         {
                                             'src': $(this).find("GolferImgUrl").first().text()
-                                        }))
+                                        })).css("height","60px")
                                         .append($('<h5/>',
                                         {
                                             //'text': (index + 1) + ". " + $(this).find("GolferName").first().text() + ($(this).find("TotalScore").last().text() == "" ? "" : " @ " + $(this).find("TotalScore").last().text())
@@ -46,12 +46,12 @@
                                         .append($('<p/>',
                                         {
                                             //'text': "Today: " + ($(this).find("RoundScore").first().text()=="0"?"Even":$(this).find("RoundScore").first().text())
-                                            'text': "Rank:" + $(this).find("TournamentRank").first().text()
+                                            'text': ($(this).find("TournamentRank").first().text() != ""?"Rank:" + $(this).find("TournamentRank").first().text():"")
                                         }))
                                         .append($('<span/>',
                                         {
-                                            'class': 'ui-li-count',
-                                            'text': statusText($(this))
+                                            'class': 'ui-li-count'
+                                            ,'text': statusText($(this))
                                         }))));
                                 })
 

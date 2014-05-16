@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/jqm-demos.css" />
     <script src='js/jquery-1.11.1.min.js'> </script>
     <script src='js/jquery.mobile-1.4.2.min.js'></script>
+    <script src="js/jquery.cookie.js" type="text/javascript"></script>
 </head> 
 
 <body> 
@@ -17,33 +18,46 @@
         <h5>Select your team to login</h5>
             <div data-role="fieldcontain"> 
             <select  class="select_choice" data-native-menu="false" id="golfteams" onchange="setTeam(this)" ></select></div>
-            <a data-role="button" data-icon="home" data-mini="true" href="Homepage.html" rel="external" data-mini="true">Login</a>
+            <a data-role="button" data-icon="home" data-mini="true" href="Homepage.html" rel="external" data-mini="true" id="btnLogin">Login</a>
                 
 
     <script language = 'javascript'>
 
-        $("#pLogin").on('pagecreate', function () {
+//        $(document).on('pagebeforeshow', function (event, ui) {
+//            debugger;
+//            
 
+//        });
+
+        $("#pLogin").on('pagecreate', function () {
            // debugger;
-            loadTeams();
+            if ($.cookie("GolfTeamId") != null) {
+                window.localStorage["GolfTeamId"] = $.cookie("GolfTeamId");
+                window.localStorage["GolfTeamName"] = $.cookie("GolfTeamName");
+                location.href = 'Homepage.html';
+                loadTeams();
+            }
+            else
+                loadTeams();
         });
 
 
+
         function loadTeams() {
-             //  debugger;
+           //    debugger;
             $.ajax(
                         {
                            // beforeSend: function () { $.mobile.loading("show"); }, //Show spinner
                             //complete: function () { $.mobile.loading("hide"); }, //Hide spinner
-                            type: "POST",
+                            type: "GET",
                             datatype: "xml",
-                            url: "http://www.pgatop2.com/Golf.EventDraft.asmx/GolfTeams",
+                            url: "Golf.EventDraft.asmx/GolfTeams",
                             data: {},
                             success: function (xml) {
                                 populateGolfTeams(xml);
                             },
                             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                alert(errorThrown);
+                               // alert(errorThrown);
                             }
                         });
         }

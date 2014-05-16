@@ -8,7 +8,7 @@
                 datatype: "xml",
                 async: false,
                 cache: false,
-                url: "http://www.pgatop2.com/Golf.EventDraft.asmx/AcceptBet",
+                url: "Golf.EventDraft.asmx/AcceptBet",
                 data: { PlayerMatchupId: matchupId, GolfTeamId: golfTeamId },
                 success: function (xml) {
                     /*disable accept button*/
@@ -64,7 +64,7 @@ function BtnCounter_Click(matchupId, golfTeamId) {
                 datatype: "xml",
                 async: false,
                 cache: false,
-                url: "http://www.pgatop2.com/Golf.EventDraft.asmx/CounterOfferBet",
+                url: "Golf.EventDraft.asmx/CounterOfferBet",
                 data: { PlayerMatchupId: matchupId, GolfTeamId: golfTeamId, Amount: amount },
                 success: function (xml) {
                     debugger;
@@ -117,7 +117,7 @@ function BtnPropose_Click(matchupId, golfTeamId) {
                 datatype: "xml",
                 // async: false,
                 //cache: false,
-                url: "http://www.pgatop2.com/Golf.EventDraft.asmx/ProposeBet",
+                url: "Golf.EventDraft.asmx/ProposeBet",
                 data: { PlayerMatchupId: matchupId, GolfTeamId: golfTeamId, Amount: amount },
                 success: function (xml) {
                     //debugger;
@@ -194,7 +194,7 @@ function Success(PlayerMatchupId, golfTeamId) {
 //                datatype: "xml",
 //                async: false,
 //                cache: false,
-//                url: "http://www.pgatop2.com/Golf.EventDraft.asmx/DeclineBet",
+//                url: "Golf.EventDraft.asmx/DeclineBet",
 //                data: { PlayerMatchupId: matchupId, GolfTeamId: golfTeamId },
 //                success: function (xml) { $.mobile.hidePageLoadingMsg(); Success(); },
 //                error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -212,7 +212,7 @@ function loadMatchups(golfTeamId) {
                 //  complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                 type: "GET",
                 datatype: "xml",
-                url: "http://www.pgatop2.com/Golf.EventDraft.asmx/PlayerMatchups2",
+                url: "Golf.EventDraft.asmx/PlayerMatchups2",
                 data: { GolfTeamId: golfTeamId },
                 success: function (xml) {
                     xmlParser(xml, golfTeamId);
@@ -332,7 +332,7 @@ function buildMatchups(xml, golfTeamId, loggedInGolfTeamId) {
                                 'id': "panel_" + PlayerMatchupId,
                                 'data-position': "right",
                                 'data-display': "overlay",
-                                'data-theme': "b"
+                                //'data-theme': "d"
                             })
                             //                             .append($('<script/>',
                             //                            {
@@ -347,7 +347,7 @@ function buildMatchups(xml, golfTeamId, loggedInGolfTeamId) {
                             .append($('<h3/>',
                             {
                                 'text': ($(this).find("isEventMatchup").first().text() == "true" ? "Event" + ($(this).find("BetClosed").first().text() == "false" ? " @ " + ($(this).find("CloseTime").first().text() == "" ? " Tee Time Not Posted" : $(this).find("CloseTime").first().text()) : " - Closed") : $(this).find("DayName").first().text() + ($(this).find("BetClosed").first().text() == "false" ? " @ " + ($(this).find("CloseTime").first().text() == "" ? " Tee Time Not Posted" : $(this).find("CloseTime").first().text()) : " - Closed"))
-                            }))
+                            })).css("color", "#ffefaa")
                             .append($('<fieldset/>',
                             {
                                 'data-role': "controlgroup",
@@ -361,7 +361,8 @@ function buildMatchups(xml, golfTeamId, loggedInGolfTeamId) {
                                 'id': "radio-choice-h-6a_" + PlayerMatchupId,
                                 'value': "on",
                                 'checked': "checked",
-                                'onchange': "OptionSet_onChange('" + PlayerMatchupId + "','1')"
+                                'onchange': "OptionSet_onChange('" + PlayerMatchupId + "','1')",
+                                'class' : "dwise-panel",
                             }))
                             .append($('<label/>',
                             {
@@ -744,14 +745,14 @@ function buildMatchups(xml, golfTeamId, loggedInGolfTeamId) {
                                 'id': "inprogress_" + PlayerMatchupId,
                                 'data-position': "right",
                                 'data-display': "overlay",
-                                'data-theme': "b"
+                                'data-theme': "d"
                             })
                             .append($('<h3/>',
                             {
                                 'data-rel': "close",
                                 //'class' : "ui-btn ui-icon-delete ui-btn-icon-left",
                                 'text': ($(this).find("isEventMatchup").first().text() == "true" ? "Event Matchup" : $(this).find("DayName").first().text() + " Matchup")
-                            }))
+                            })).css("color", "#ffefaa")
                             .append($('<ul/>',
                             {
                                 'data-role': "listview"

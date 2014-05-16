@@ -16,7 +16,7 @@
                          $.mobile.loading("show", {
                              text: "Loading Top2",
                              textVisible: true,
-                             theme: "b",
+                            theme: "d",
                              html: ""
                          });
 
@@ -24,7 +24,7 @@
                      });
 
                      $(document).bind('pagechange', function (event) {
-                         $('.ui-page-active .eventHeader').text(window.localStorage["GolfEventName"]);
+                       //  $('.ui-page-active .eventHeader').text(window.localStorage["GolfEventName"]);
                          $('.ui-page-active .teamHeader').text(window.localStorage["GolfTeamName"]);
                      });
 
@@ -66,7 +66,7 @@
                                 //complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "GET",
                                 datatype: "xml",
-                                url: "http://www.pgatop2.com/Golf.EventDraft.asmx/TeamTop2",
+                                url: "Golf.EventDraft.asmx/TeamTop2",
                                 data: { GolfTeamId: window.localStorage["GolfTeamId"] },
                                 success: function (xml) { xmlParser(xml); },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -87,20 +87,20 @@
                                     <li><a href="javascript:history.go(-1)" data-icon="back" data-direction="reverse" data-mini="true">Back</a></li>
                                     <li><a href="Homepage.html" rel="external" data-mini="true" data-icon="home">Home</a></li>
                                     <li><a href="PlayerMatchups.htm" rel="external" data-mini="true" data-icon="plus" class="ui-icon-proposed" id="A1">Matchups</a></li>
-                                    <li><a href="#popupMenu" data-rel="popup" data-inline="true" data-icon="grid" data-mini="true">Scorecards</a></li>
+                                    <li><a href="Leaderboard.htm" rel="external" data-inline="true" data-mini="true" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-leaderboard">Leaderboard</a></li>
                                     <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
                                 </ul>
                             </div>
-                            <div  data-role='footer'  style="height:30px" data-theme="b"  >
+                            <div  data-role='footer'  data-theme="c"  >
                                 <div data-role="navbar">
                                     <ul class="custom-navbar ui-grid-a" >
-                                        <li class="eventHeader" style="text-align:left; font-size:small"></li>
+                                        <li id="pagHeader" style="text-align:left; font-size:small">Top 2</li>
                                         <li class="teamHeader" style="text-align:right; font-size:x-small"></li>
                                     </ul>
                                 </div>
                             </div>
                     </div>
-                    <div data-role='content' id='dcolapsibleTeamTop2'>
+                    <div data-role='content' id='dcolapsibleTeamTop2' data-theme="b">
                             <ul data-role='listview' id="ulTeamTop2" data-inset='true'></ul>
                      </div>
                 </div>

@@ -5,20 +5,20 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1"> 
                 <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
                 <link rel="stylesheet" href="css/jqm-demos.css"/>
-                <link rel="stylesheet"  href="css/Leaderboard.css" />
+                <link rel="stylesheet"  href="css/Leaderboard.css"/>
                 <script src='js/jquery-1.11.1.min.js'></script>
 	            <script src='js/jquery.mobile-1.4.2.min.js'></script>
                  <script language="javascript">
-                     $(document).bind('pagechange', function (event) {
-                         $('.ui-page-active .eventHeader').text(window.localStorage["GolfEventName"]);
-                         //$('.ui-page-active .teamHeader').text($.cookie("GolfTeamName"));
-                     });
+//                     $(document).bind('pagechange', function (event) {
+//                         $('.ui-page-active .eventHeader').text(window.localStorage["GolfEventName"]);
+//                         //$('.ui-page-active .teamHeader').text($.cookie("GolfTeamName"));
+//                     });
 
                      $(window).load(function () {
                          $.mobile.loading("show", {
-                             text: "Loading Leaderboard",
+                             text: "Leaderboard",
                              textVisible: true,
-                             theme: "b",
+                            theme: "d",
                              html: ""
                          });
 
@@ -56,23 +56,18 @@
                                     <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
                                 </ul>
                             </div>
-                            <div  data-role='footer' class="ui-grid-a" style="height:50px" data-theme='b'>
+                            <div  data-role='footer' lass="custom-navbar ui-bar-a" data-theme='c'>
                                 <div data-role="navbar">
-                                    <div id="pageHeaderHeader1"  class="ui-block-b"></div> 
+                                    <div id="pgaHeader"  class="eventHeader">Leaderboard</div> 
                                     <div id="pageHeaderFooter1" class="ui-block-b ui-btn-right">
-                                    <div data-role="fieldcontain" data-theme='b'> 
-                                                <select id="teamsappointed" class="select_choice" data-native-menu="false" id="teamsappointed" data-theme='b' >
-                                                </select>
-                                            </div>
+                                        <select id="teamsappointed" class="select_choice" data-native-menu="false"></select>
                                     </div>
                                 </div>
                             </div>
                     </div>
                     <div data-role='content'>
-                        <h3 id="title">Leaderboard</h3>
-                        <ul data-role='listview' id="ulLeaderboard" data-inset='true' data-filter='true' data-theme='c'></ul>
-                    </div>
-                    <div data-role='footer'></div>            
+                        <ul data-role='listview' id="ulLeaderboard" data-inset='true' data-filter='true' data-theme='b'></ul>
+                    </div>           
                 </div>
                     <script src="js/LoadXml.js"></script>
                     <script src="js/Leaderboard.js"></script>
@@ -82,7 +77,7 @@
                             // loadXml('Leaderboard', '');
                             loadGolfers(window.localStorage["GolfTeamId"]);
                             loadGolfTeams(window.localStorage["GolfTeamId"]);
-                            $('#eventHeader').text(window.localStorage["GolfEventName"]);
+                          //  $('#eventHeader').text(window.localStorage["GolfEventName"]);
                         });
 
                         $("#leaderboard").on('pageshow', function () {
@@ -104,7 +99,7 @@
                                 //complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "GET",
                                 datatype: "xml",
-                                url: "http://www.pgatop2.com/Golf.EventDraft.asmx/Leaderboard",
+                                url: "Golf.EventDraft.asmx/Leaderboard",
                                 data: { GolfTeamId: golfTeamId },
                                 success: function (xml) { xmlParser(xml); },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -135,7 +130,7 @@
                             complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                             type: "GET",
                             datatype: "xml",
-                            url: "http://www.pgatop2.com/Golf.EventDraft.asmx/GolfTeamDelegates",
+                            url: "Golf.EventDraft.asmx/GolfTeamDelegates",
                             data: { GolfTeamId: golfTeamId },
                             success: function (xml) {
                                 populateGolfTeams(xml);

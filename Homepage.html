@@ -15,8 +15,8 @@
                 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-                <link rel="stylesheet"  href="css/dwise.css" />
                 <link rel="stylesheet" href="css/jqm-demos.css"/>
+                <link href="css/HomePage.css" rel="stylesheet" type="text/css" />
                 <script src='js/jquery-1.11.1.min.js'></script>
 	            <script src='js/jquery.mobile-1.4.2.min.js'></script>
 
@@ -49,29 +49,29 @@
 
                      $(window).load(function () {
                          $.mobile.loading("show", {
-                             text: "Loading Event",
+                             text: (window.localStorage["GolfEventName"]==undefined?"Loading Event":window.localStorage["GolfEventName"]),
                              textVisible: true,
-                             theme: "b",
+                             theme: "d",
                              html: ""
                          });
                      });
 
 
-                     $(document).on('pagebeforeshow', function (event, ui) {
-                         //  debugger;
-                         if (window.localStorage["GolfTeamId"] == undefined) {
-                             $.mobile.changePage("pulogin.htm", { transition: "pop" });
+//                     $(document).on('pagebeforeshow', function (event, ui) {
+//                         //  debugger;
+//                         if (window.localStorage["GolfTeamId"] == undefined) {
+//                             $.mobile.changePage("pulogin.htm", { transition: "pop" });
 
-//                             if ($.cookie("GolfTeamId") == null || $.cookie("GolfTeamName") == null) {
-//                                 $.mobile.changePage("pulogin.htm", { transition: "pop" });
-//                             }
-//                             else {
-//                                 window.localStorage["GolfTeamId"] = $.cookie("GolfTeamId");
-//                                 window.localStorage["GolfTeamName"] = $.cookie("GolfTeamName");
+////                             if ($.cookie("GolfTeamId") == null || $.cookie("GolfTeamName") == null) {
+////                                 $.mobile.changePage("pulogin.htm", { transition: "pop" });
+////                             }
+////                             else {
+////                                 window.localStorage["GolfTeamId"] = $.cookie("GolfTeamId");
+////                                 window.localStorage["GolfTeamName"] = $.cookie("GolfTeamName");
 
-//                             }
-                         }
-                     });
+////                             }
+//                         }
+//                     });
 
 //                         var urlParameters = getUrlVars();
 //                         if (urlParameters != "") {
@@ -151,7 +151,7 @@
                             //complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                             type: "GET",
                             datatype: "xml",
-                            url: "http://www.pgatop2.com/Golf.EventDraft.asmx/HomePageLeaders",
+                            url: "Golf.EventDraft.asmx/HomePageLeaders",
                             data: { GolfTeamId: golfTeamId },
                             success: function (xml) {
                                 //debugger;
@@ -180,9 +180,10 @@
                             $.mobile.loading("hide"); 
                         }
 
-                        
 
-                        function liClick(url) {
+
+                        function liClick(url,Day) {
+                            window.localStorage["Day"] = Day;
                             $(location).attr('href', url);
                         }
 
@@ -201,7 +202,7 @@
                            // complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                             type: "GET",
                             datatype: "xml",
-                            url: "http://www.pgatop2.com/Golf.EventDraft.asmx/GolfTeamDelegates",
+                            url: "Golf.EventDraft.asmx/GolfTeamDelegates",
                             data: { GolfTeamId: golfTeamId },
                             success: function (xml) {
                                 populateGolfTeams(xml);
@@ -257,10 +258,10 @@
                         
                     </script>        
                     <div data-role='header' id="pageHeader" data-position="fixed" data-id="MainHeader">
-                            <div data-role="navbar">
+                            <div data-role="navbar" data-theme='e'>
                                  <ul class="custom-navbar ui-grid-b" >
                                     <li><a href="javascript:history.go(-1)" data-icon="back" data-direction="reverse" data-mini="true">Back</a></li>
-                                    <li></li>
+                                    <li><a href="Homepage.html" rel="external" data-mini="true" data-icon="home">Home</a></li>
                                     <li><a href="PlayerMatchups.htm" rel="external" data-mini="true" data-icon="plus" class="ui-icon-proposed" id="A1">Matchups</a></li>
                                     <li><a href="#popupMenu" data-rel="popup" data-inline="true" data-icon="grid" data-mini="true">Scorecards</a></li>
                                     <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
@@ -272,21 +273,18 @@
                                 </ul>
                             </div>
                             
-                            <div  data-role='footer' class="ui-grid-a" style="height:50px" data-theme='b'>
+                            <div  data-role='footer' lass="custom-navbar ui-bar-a" data-theme='c'>
                                 <div data-role="navbar">
                                     <div id="pageHeaderHeader1"  class="eventHeader"></div> 
                                     <div id="pageHeaderFooter1" class="ui-block-b ui-btn-right">
-                                    <div data-role="fieldcontain" data-theme='b'> 
-                                                <select id="teamsappointed" class="select_choice" data-native-menu="false" id="Select1" data-theme='b' >
-                                                </select>
-                                            </div>
+                                        <select id="teamsappointed" class="select_choice" data-native-menu="false"></select>
                                     </div>
                                 </div>
                             </div>
                      </div>
                     <div data-role='content'>
                             <h3 id="DelayNotification" style="visibility:hidden;display:none;color:red"></h3>
-                            <ul data-role='listview' id="HomeMenu" data-inset='true'/>
+                            <ul data-role='listview' id="HomeMenu" data-inset='true' data-theme="b"/>
                      </div>
                 </div>   
                 <script language = 'javascript'>

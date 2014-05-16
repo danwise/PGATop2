@@ -5,7 +5,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1"> 
                 <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
                 <link rel="stylesheet" href="css/jqm-demos.css"/>
-                <link rel="stylesheet"  href="css/draftresults.css" />
+                <link rel="stylesheet"  href="css/Leaderboard.css" />
                 <script src='js/jquery-1.11.1.min.js'></script>
 	            <script src='js/jquery.mobile-1.4.2.min.js'></script>
                 
@@ -21,7 +21,7 @@
                         $.mobile.loading("show", {
                             text: "Loading Draft Results",
                             textVisible: true,
-                            theme: "b",
+                           theme: "a",
                             html: ""
                         });
 
@@ -82,7 +82,7 @@
                                // complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "POST",
                                 datatype: "xml",
-                                url: "http://www.pgatop2.com/Golf.EventDraft.asmx/DraftResults",
+                                url: "Golf.EventDraft.asmx/DraftResults",
                                 data: { GolfTeamId: window.localStorage["GolfTeamId"] },
                                 success: function (xml) { xmlParser(xml); },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -127,24 +127,21 @@
 //                            alterContent(this.attr("href"));
                         });
                     </script>
-                    <div data-role='header' id="Div8" data-theme='e'>
+                    <div data-role='header' id="pageHeader" data-position="fixed" data-id="MainHeader">
                             <div data-role="navbar">
                                  <ul class="custom-navbar ui-grid-b" >
                                     <li><a href="javascript:history.go(-1)" data-icon="back" data-direction="reverse" data-mini="true">Back</a></li>
                                     <li><a href="Homepage.html" rel="external" data-mini="true" data-icon="home">Home</a></li>
-                                    <li><a href="PlayerMatchups.htm" rel="external" data-mini="true" data-icon="plus" class="ui-icon-proposed" id="A1">Matchups</a></li>
+                                    <li><a href="PlayerMatchups.htm" rel="external" data-mini="true" data-icon="plus" class="ui-icon-proposed" id="A2">Matchups</a></li>
                                     <li></li>
                                     <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
                                 </ul>
                             </div>
-                            <div  data-role='footer' class="ui-grid-a" style="height:50px" data-theme='b'>
+                            <div  data-role='footer' class="ui-grid-a" data-theme='c'>
                                 <div data-role="navbar">
                                     <div id="pageHeaderHeader1"  class="ui-block-b"></div> 
                                     <div id="pageHeaderFooter1" class="ui-block-b ui-btn-right">
-                                    <div data-role="fieldcontain" data-theme='b'> 
-                                                <select id="teamsappointed" class="select_choice" data-native-menu="false" id="Select1" data-theme='b' >
-                                                </select>
-                                            </div>
+                                        <select id="teamsappointed" class="select_choice" data-native-menu="false"></select>
                                     </div>
                                 </div>
                             </div>
@@ -152,8 +149,7 @@
                     <div data-role='content'>
                         <h3>Draft Results</h3>
                         <ul data-role='listview' id="ulDraftResults" data-inset='true' data-filter='true'></ul>
-                    </div>
-                    <div data-role='footer'></div>            
+                    </div>         
                 </div>
 
               

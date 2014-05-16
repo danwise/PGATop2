@@ -17,7 +17,7 @@
                         $.mobile.loading("show", {
                             text: "Loading Golfers",
                             textVisible: true,
-                            theme: "b",
+                           theme: "a",
                             html: ""
                         });
 
@@ -90,14 +90,11 @@
                                     <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
                                 </ul>
                             </div>
-                            <div  data-role='footer' class="ui-grid-a" style="height:50px" data-theme='b'>
+                            <div  data-role='footer' class="ui-grid-a" data-theme='c'>
                                 <div data-role="navbar">
                                     <div id="Div1"  class="ui-block-b"></div> 
-                                    <div id="Div2" class="ui-block-b ui-btn-right">
-                                    <div data-role="fieldcontain" data-theme='b'> 
-                                                <select class="select_choice" data-native-menu="false" id="teamsappointed" data-theme='b' >
-                                                </select>
-                                            </div>
+                                    <div id="pageHeaderFooter1" class="ui-block-b ui-btn-right">
+                                        <select id="teamsappointed" class="select_choice" data-native-menu="false"></select>
                                     </div>
                                 </div>
                             </div>
@@ -156,14 +153,14 @@
 //                                $.mobile.loading("show", {
 //                                    text: "Loading Delegates",
 //                                    textVisible: true,
-//                                    theme: "b",
+//                                   theme: "a",
 //                                    html: ""
 //                                });
 //                             }, //Show spinner
 //                            complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                             type: "GET",
                             datatype: "xml",
-                            url: "http://www.pgatop2.com/Golf.EventDraft.asmx/GolfTeamDelegates",
+                            url: "Golf.EventDraft.asmx/GolfTeamDelegates",
                             data: { GolfTeamId: golfTeamId },
                             success: function (xml) {
                                 populateGolfTeams(xml);
@@ -249,7 +246,7 @@
                                     datatype: "xml",
                                     async: false,
                                     cache: false,
-                                    url: "http://www.pgatop2.com/Golf.EventDraft.asmx/DraftGolfer",
+                                    url: "Golf.EventDraft.asmx/DraftGolfer",
                                     data: { EventOddsId: Id, GolfTeamId: golfTeamId },
                                     success: function (xml) {
                                        // debugger;
@@ -287,7 +284,7 @@
                         {
                             type: "GET",
                             datatype: "xml",
-                            url: "http://www.pgatop2.com/Golf.EventDraft.asmx/UndraftedGolfers",
+                            url: "Golf.EventDraft.asmx/UndraftedGolfers",
                             data: { GolfTeamId: golfTeamId },
                             success: function (xml) {
                                 xmlParser(xml, golfTeamId);

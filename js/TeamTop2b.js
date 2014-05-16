@@ -1,4 +1,13 @@
-﻿function TeamTop2(xml) {
+﻿function gotoGolfer(GolferId,GolfTeamId,GolferName) {
+   // debugger;
+    window.localStorage["GolferId"] = GolferId;
+    window.localStorage["GolferGolfTeamId"] = GolfTeamId;
+    window.localStorage["GolferName"] = GolferName;
+    var url = "Golfer.htm";
+    $(location).attr('href', url);
+}
+
+function TeamTop2(xml) {
     // debugger;
     $(xml).find("GolfTeam").sort(function (a, b) {
         var aScore = parseInt(a.getElementsByTagName("TeamTop2Score")[a.getElementsByTagName("TeamTop2Score").length - 1].childNodes[0].nodeValue);
@@ -12,14 +21,17 @@
                                     if (index == 0 && $(this).find("TeamTop2Score").text() != "0") {
                                         $("#TeamTop2Leader").text($(this).find("GolfTeamName").text() + " @ " + $(this).find("TeamTop2Score").text());
                                     }
+                                   // debugger;
                                     var $newli = $("#dcolapsibleTeamTop2")
                                     .append($('<div/>',
                                         {
                                             //'data-role': 'list-divider',
                                             'data-role': 'collapsible',
-                                          //  'data-theme': 'e',
-                                            'data-collapsed-icon': 'arrow-r',
-                                            'data-expanded-icon': 'arrow-d'
+                                            //  'data-theme': 'e',
+                                            'data-iconpos':'right',
+                                            'data-collapsed-icon': 'carat-d',
+                                            'data-expanded-icon': 'carat-u',
+                                            'data-collapsed': ($(this).find("GolfTeamId").first().text().toUpperCase() == window.localStorage["GolfTeamId"].toUpperCase() ? "false" : "true")
                                         })
                                         .append($('<h3/>',
                                         {
@@ -29,8 +41,7 @@
                                         {
                                             'id': 'teamTop2_' + $(this).find("GolfTeamId").first().text(),
                                             'data-role': 'listview',
-                                            'data-inset': 'true'
-
+                                            'data-inset': 'true',
                                         })));
 
                                     $(this).find("Golfer").sort(function (a, b) {
@@ -46,7 +57,7 @@
                                              .append($('<a/>',
                                                 {
                                                     'rel' : 'external',
-                                                    'href': $(this).find("GolferPageUrl").first().text(),
+                                                    'href': "javascript:gotoGolfer('" + $(this).find("GolferId").first().text() + "','" + $(this).find("GolfTeamId").first().text() + "','" + $(this).find("GolferName").first().text() + "')",
                                                     'data-transition': 'fade'
                                                 })
                                                 .append($('<h3/>',

@@ -16,5 +16,6 @@ namespace Golf.Web
         public int Count { get; set; }
         public string url { get; set; }
         public int ProductDisplayOrder { get; set; }
+        public string Day { get; set; }
     }
 }

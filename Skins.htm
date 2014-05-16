@@ -10,15 +10,14 @@
 	            <script src='js/jquery.mobile-1.4.2.min.js'></script>
                 <script language="javascript">
                     $(document).bind('pagechange', function (event) {
-                        $('.ui-page-active .eventHeader').text(window.localStorage["GolfEventName"]);
                         $('.ui-page-active .teamHeader').text(window.localStorage["GolfTeamName"]);
                     });
 
                     $(window).load(function () {
                         $.mobile.loading("show", {
-                            text: "Loading Skins Results",
+                            text: "Skins " + window.localStorage["Day"],
                             textVisible: true,
-                            theme: "b",
+                            theme: "a",
                             html: ""
                         });
                         //$.mobile.loading('show');
@@ -30,18 +29,10 @@
                 <div data-role='page' id="skins"> 
                     <script src="js/LoadXml.js"></script>
                     <script src="js/Skins.js"></script>
-                    <script src="js/GetURLParameters.js"></script>
-                    <script src="js/jquery.cookie.js"></script>
                     <script type="text/javascript">
                         $("#skins").on('pageinit', function () {
-                            var urlParameters = getUrlVarsPage('skins');
-                            var Day;
-                            if (urlParameters != "") {
-                                if (urlParameters.Day != null) {
-                                    Day = urlParameters.Day
-                                }
-                            }
-                            loadSkins(Day);
+                            $('#eventHeader').text("Skins - " + window.localStorage["Day"]);
+                            loadSkins(window.localStorage["Day"]);
                         });
 
                         $("#skins").on('pageshow', function () {
@@ -59,7 +50,7 @@
                            //     complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "GET",
                                 datatype: "xml",
-                                url: "http://www.pgatop2.com/Golf.EventDraft.asmx/GetSkins",
+                                url: "Golf.EventDraft.asmx/GetSkins",
                                 data: { GolfTeamId: window.localStorage["GolfTeamId"], Day: day },
                                 success: function (xml) { xmlParser(xml,day); },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -82,14 +73,14 @@
                                     <li><a href="javascript:history.go(-1)" data-icon="back" data-direction="reverse" data-mini="true">Back</a></li>
                                     <li><a href="Homepage.html" rel="external" data-mini="true" data-icon="home">Home</a></li>
                                     <li><a href="PlayerMatchups.htm" rel="external" data-mini="true" data-icon="plus" class="ui-icon-proposed" id="A1">Matchups</a></li>
-                                    <li><a href="#popupMenu" data-rel="popup" data-inline="true" data-icon="grid" data-mini="true">Scorecards</a></li>
+                                    <li><a href="Leaderboard.htm" rel="external" data-inline="true" data-mini="true" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-top ui-icon-leaderboard">Leaderboard</a></li>
                                     <li><a href='javascript:refreshPage()' data-icon="refresh" data-mini="true">Refresh</a></li>
                                 </ul>
                             </div>
-                            <div  data-role='footer'  style="height:30px" data-theme="b" >
+                            <div  data-role='footer' data-theme="b" >
                                 <div data-role="navbar">
                                     <ul class="custom-navbar ui-grid-a" >
-                                        <li class="eventHeader" style="text-align:left; font-size:small"></li>
+                                        <li id="eventHeader" style="text-align:left; font-size:small"></li>
                                         <li class="teamHeader" style="text-align:right; font-size:x-small"></li>
                                     </ul>
                                 </div>
