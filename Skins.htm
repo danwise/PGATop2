@@ -50,7 +50,7 @@
                            //     complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "GET",
                                 datatype: "xml",
-                                url: "Golf.EventDraft.asmx/GetSkins",
+                                url: "http://www.dwise.net/Golf.EventDraft.asmx/GetSkins",
                                 data: { GolfTeamId: window.localStorage["GolfTeamId"], Day: day },
                                 success: function (xml) { xmlParser(xml,day); },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {

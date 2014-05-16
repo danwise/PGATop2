@@ -66,7 +66,7 @@
                                 //complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "GET",
                                 datatype: "xml",
-                                url: "Golf.EventDraft.asmx/TeamTop2",
+                                url: "http://www.dwise.net/Golf.EventDraft.asmx/TeamTop2",
                                 data: { GolfTeamId: window.localStorage["GolfTeamId"] },
                                 success: function (xml) { xmlParser(xml); },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {

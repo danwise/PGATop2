@@ -82,7 +82,7 @@
                                // complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "POST",
                                 datatype: "xml",
-                                url: "Golf.EventDraft.asmx/DraftResults",
+                                url: "http://www.dwise.net/Golf.EventDraft.asmx/DraftResults",
                                 data: { GolfTeamId: window.localStorage["GolfTeamId"] },
                                 success: function (xml) { xmlParser(xml); },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {

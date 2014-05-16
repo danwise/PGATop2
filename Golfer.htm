@@ -82,7 +82,7 @@
                                // complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "GET",
                                 datatype: "xml",
-                                url: "Golf.EventDraft.asmx/Golfer",
+                                url: "http://www.dwise.net/Golf.EventDraft.asmx/Golfer",
                                 data: { GolfTeamId: golfTeamId, GolferId: golferId },
                                 success: function (xml) { xmlParser(xml, golferId); },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {

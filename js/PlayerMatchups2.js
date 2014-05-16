@@ -8,7 +8,7 @@
                 datatype: "xml",
                 async: false,
                 cache: false,
-                url: "Golf.EventDraft.asmx/AcceptBet",
+                url: "http://www.dwise.net/Golf.EventDraft.asmx/AcceptBet",
                 data: { PlayerMatchupId: matchupId, GolfTeamId: golfTeamId },
                 success: function (xml) {
                     /*disable accept button*/
@@ -64,7 +64,7 @@ function BtnCounter_Click(matchupId, golfTeamId) {
                 datatype: "xml",
                 async: false,
                 cache: false,
-                url: "Golf.EventDraft.asmx/CounterOfferBet",
+                url: "http://www.dwise.net/Golf.EventDraft.asmx/CounterOfferBet",
                 data: { PlayerMatchupId: matchupId, GolfTeamId: golfTeamId, Amount: amount },
                 success: function (xml) {
                     debugger;
@@ -117,7 +117,7 @@ function BtnPropose_Click(matchupId, golfTeamId) {
                 datatype: "xml",
                 // async: false,
                 //cache: false,
-                url: "Golf.EventDraft.asmx/ProposeBet",
+                url: "http://www.dwise.net/Golf.EventDraft.asmx/ProposeBet",
                 data: { PlayerMatchupId: matchupId, GolfTeamId: golfTeamId, Amount: amount },
                 success: function (xml) {
                     //debugger;
@@ -194,7 +194,7 @@ function Success(PlayerMatchupId, golfTeamId) {
 //                datatype: "xml",
 //                async: false,
 //                cache: false,
-//                url: "Golf.EventDraft.asmx/DeclineBet",
+//                url: "http://www.dwise.net/Golf.EventDraft.asmx/DeclineBet",
 //                data: { PlayerMatchupId: matchupId, GolfTeamId: golfTeamId },
 //                success: function (xml) { $.mobile.hidePageLoadingMsg(); Success(); },
 //                error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -212,7 +212,7 @@ function loadMatchups(golfTeamId) {
                 //  complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                 type: "GET",
                 datatype: "xml",
-                url: "Golf.EventDraft.asmx/PlayerMatchups2",
+                url: "http://www.dwise.net/Golf.EventDraft.asmx/PlayerMatchups2",
                 data: { GolfTeamId: golfTeamId },
                 success: function (xml) {
                     xmlParser(xml, golfTeamId);

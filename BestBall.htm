@@ -68,7 +68,7 @@
                                 //complete: function () { $.mobile.loading("hide"); }, //Hide spinner
                                 type: "GET",
                                 datatype: "xml",
-                                url: "Golf.EventDraft.asmx/BestBall",
+                                url: "http://www.dwise.net/Golf.EventDraft.asmx/BestBall",
                                 data: { GolfTeamId: window.localStorage["GolfTeamId"], Day: day },
                                 success: function (xml) { xmlParser(xml,day); },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {
